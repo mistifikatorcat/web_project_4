@@ -1,0 +1,80 @@
+.profile{
+    max-width: 880px;
+    max-height: 120px;
+}
+
+.profile__wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile__card{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.profile__picture-wrapper{
+    max-width: 168.75px;
+}
+
+.profile__picture{
+    border-radius: 120px;
+    max-width: 120px;
+    margin-top: 3.75px;
+    margin-bottom: 3.75px;
+    margin-left: 22.5px;
+    margin-right: 26.5px;
+}
+
+.profile__info{
+    margin-left: 3.75px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 18px;
+    max-width: 415px;
+    max-height: 77px;
+    align-items: center;
+}
+
+.profile__name{
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 48px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 0; 
+}
+
+.profile__edit-button{
+    width: 24px;
+    height: 24px;
+}
+
+.profile__edit-button:hover{
+
+}
+
+.profile__category{
+    margin: 0;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.profile__add{
+    max-width: 150px;
+    margin-left: 165px;
+    display: flex;
+    align-items: center;
+}
+
+.profile__add-button{
+    border: 2px solid #FFFFFF;
+    padding: 14px 64px;
+}

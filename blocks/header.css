@@ -1,0 +1,18 @@
+.header{
+    position: relative;
+}
+
+.header__wrapper{
+    max-width: 880px;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 45px;
+    margin-bottom: 62px;
+    border-bottom: 1px solid #545454;
+}
+
+.header__logo{
+    width: 173px;
+    height: 33px;
+    padding-bottom: 41px;
+}
