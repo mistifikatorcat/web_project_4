@@ -1,0 +1,25 @@
+.card{
+    background-color: #FFF;
+    color: #000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 361px;
+    max-width: 282px;
+    border-radius: 10px;
+}
+
+.card__image{
+    max-height: 282px;
+    background-color: #000;
+}
+
+.card__info{
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 15px 31px 21px;
+}
+
+.card__title{
+    margin: 0;
+}
