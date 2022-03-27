@@ -26,7 +26,10 @@
 
 .card__like-button{
     background-image: url(../images/like.svg);
+    background-color: #FFF;
+    /*transition: background-color 0.6s linear;*/
     width: 21px;
     height: 19px;
     border: 0;
+    cursor: pointer;
 }
