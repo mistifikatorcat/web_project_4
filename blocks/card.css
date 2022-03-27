@@ -23,3 +23,10 @@
 .card__title{
     margin: 0;
 }
+
+.card__like-button{
+    background-image: url(../images/like.svg);
+    width: 21px;
+    height: 19px;
+    border: 0;
+}

@@ -23,16 +23,15 @@
                 </div>
                 <div class="profile__info">
                     <h2 class="profile__name">Jacque Fresco</h2>
-                    <a href="#" class="profile__edit-button">
-                        <img src="./images/Edit Button.svg" alt="Edit Profile" class="profile__edit-icon">
-                    </a>
+                    <button class="profile__edit-button">
+                        
+                    </button>
                     <p class="profile__category">Philosopher</p>
                 </div>    
             </div>
             <div class="profile__add">
-                <a href="#" class="profile__add-button">
-                    <img src="./images/Add_button.png" alt="Add a picture" class="profile__add-icon">
-                </a>
+                <button class="profile__add-button">
+                </button>
             </div>
         </div>
     </section>
@@ -43,9 +42,9 @@
                     <img src="./images/grid-1.png" alt="picture" class="card__image">
                     <div class="card__info">
                         <h3 class="card__title">Yosemite Valley</h3>
-                        <a href="#" class="card__like-button">
-                            <img src="./images/like.svg" alt="like" class="card__like-icon">
-                        </a>
+                        <button class="card__like-button">
+                            
+                        </button>
                     </div>
                 </div>
             </li>
@@ -55,9 +54,9 @@
                     <div class="card__info">
                         <h3 class="card__title">Lake Louise</h3>
                         
-                        <a href="#" class="card__like-button">
-                            <img src="./images/like.svg" alt="like" class="card__like-icon">
-                        </a>
+                        <button class="card__like-button">
+                            
+                        </button>
                     </div>
                 </div>
             </li>
@@ -67,9 +66,9 @@
                     <div class="card__info">
                         <h3 class="card__title">Bald Mountains</h3>
             
-                        <a href="#" class="card__like-button">
-                            <img src="./images/like.svg" alt="like" class="card__like-icon">
-                        </a>
+                        <button class="card__like-button">
+                            
+                        </button>
                     </div>
                 </div>
             </li>
@@ -79,9 +78,9 @@
                     <div class="card__info">
                         <h3 class="card__title">Latemar</h3>
                         
-                        <a href="#" class="card__like-button">
-                            <img src="./images/like.svg" alt="like" class="card__like-icon">
-                        </a>
+                        <button class="card__like-button">
+                            
+                        </button>
                     </div>
                 </div>
             </li>
@@ -91,9 +90,9 @@
                         <div class="card__info">
                             <h3 class="card__title">Vanoise Nationa...</h3>
                             
-                        <a href="#" class="card__like-button">
-                            <img src="./images/like.svg" alt="like" class="card__like-icon">
-                        </a>
+                        <button class="card__like-button">
+                            
+                        </button>
                         </div>
                 </div>
             </li>
@@ -102,23 +101,22 @@
                     <img src="./images/grid-6.png" alt="picture" class="card__image">
                         <div class="card__info">
                             <h3 class="card__title">Lago di Braies</h3>
+                       
+                        <button class="card__like-button">
                             
-                        <a href="#" class="card__like-button">
-                            <img src="./images/like.svg" alt="like" class="card__like-icon">
-                        </a>
+                        </button>
                         </div>
                 </div>
             </li>
         </ul>
     </section>
-    <section class="popup">
+    <section class="popup_opened">
         <div class="popup__container">
             <form class="popup__form form">
+                <h3 class="form__title">Edit Profile</h3>
                 <fieldset class="form__fieldset">
-                    <label class="form__label" for="name">Name *</label>
-                    <input class="form__input" type="text" id="name" name="name" placeholder="Name Surname" required />
-                    <label class="form__label" for="name">Category</label>
-                    <input class="form__input" type="text" id="name" name="name" placeholder="Name Surname" required />
+                    <input class="form__input" type="text" id="name" name="name" placeholder="Name" required />
+                    <input class="form__input" type="text" id="name" name="name" placeholder="About me" required />
                 </fieldset>
                 <fieldset class="form__fieldset">
                     <button class="form__button" type="submit">Save</button>
