@@ -1,5 +1,5 @@
 .form{
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     max-width: 358px;
@@ -11,7 +11,8 @@
     flex-direction: column;
     margin: 0;
     gap: 30px;
-    padding: 0 36px;
+    padding: 0;
+    /*padding: 0 36px;*/
     padding-top: 54px;
     border: none; 
     width: 100%;
@@ -47,7 +48,7 @@
     color: #ffffff;
     width: 358px;
     height: 50px;
-    border-radius: 4px;
+    border-radius: 2px;
     opacity: 100%;
     transition: opacity 0.3s ease-in-out;
     font-family: "Inter", "Arial", sans-serif;
@@ -64,4 +65,34 @@
 
   .form__button:hover {
     opacity: 0.8;
+  }
+
+  @media screen and (max-width: 600px) {
+    .form{
+        max-width: 238px;
+        width: 100%;
+    }
+
+    .form__fieldset{
+        padding-top: 76px;
+    }
+
+    .form__fieldset:last-child{
+        padding-top: 46px;
+        padding-bottom: 25px;
+    }
+
+    .form__button{
+        padding: 14px 100px;
+        width: 238px;
+        height: 46px;
+        border-radius: 2px;
+        font-family: "Inter", "Arial", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        letter-spacing: 0em;
+        text-align: center;
+
+    }
   }

@@ -17,3 +17,15 @@
     height: 33px;
     padding-bottom: 41px;
 }
+
+@media screen and (max-width: 600px) {
+.header{
+    max-width: 320px;
+}
+
+.header__wrapper{
+    margin-top: 28px;
+    margin-bottom: 42px;
+    margin-left: 27px;
+}
+}

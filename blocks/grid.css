@@ -12,3 +12,30 @@
     padding: 0;
 }
 
+
+@media screen and (max-width: 960px) {
+    .grid{
+        margin: 0 auto;
+        margin-top: 50px;
+        max-width: 720px;
+    }
+    
+    .grid__cards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .grid{
+        margin: 0 auto;
+        margin-top: 36px;
+        max-width: 288px;
+    }
+
+    .grid__cards{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+    }
+    
+}
