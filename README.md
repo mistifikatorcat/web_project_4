@@ -13,4 +13,18 @@
 
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
 
-Have fun with JavaScript!
+**Project features:**
+- Semantic HTML5
+- Flexbox
+- Positioning
+- Flat BEM
+- Grid
+- Javascript
+- Adaptive design
+  
+  **Plans to improve:**
+  - Do not forget to write readme
+  - Less bugs
+  - More cool features
+
+  * [Link to the project itself](https://mistifikatorcat.github.io/web_project_4/)
