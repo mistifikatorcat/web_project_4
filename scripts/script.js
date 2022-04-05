@@ -3,7 +3,7 @@ let close = document.querySelector(".popup__close");
 let form = document.querySelector(".popup");
 
     function openForm(){
-        form.classList.add("popup__opened");
+        form.classList.add("popup__enabled");
         let nameInput = document.querySelector(".profile__name");
         let jobInput = document.querySelector(".profile__category");
         let namePlaceholder = document.getElementById("name").placeholder = nameInput.textContent;
@@ -13,7 +13,7 @@ let form = document.querySelector(".popup");
     button.addEventListener("click", openForm);
     }
     function closeForm(){
-        form.classList.remove("popup__opened");
+        form.classList.remove("popup__enabled");
     }
     if (close){
     close.addEventListener("click", closeForm);

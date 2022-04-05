@@ -32,7 +32,6 @@
     flex-wrap: wrap;
     gap: 16px 18px;
     max-width: 415px;
-    max-height: 77px;
     align-items: center;
 }
 
@@ -49,7 +48,7 @@
 
 .profile__edit-button{
     background-image: url(../images/Edit\ Button.svg);
-    background-color: black;
+    background-color: transparent;
     transition: opacity 0.6s linear;
     border: 0;
     width: 24px;
@@ -82,9 +81,10 @@
     height: 50px;
     width: 150px;
     border: 2px solid #FFFFFF;
+    border-radius: 2px;
     padding: 14px 64px;
     background: url(../images/Add_button.png) no-repeat center;
-    background-color: black;
+    background-color: transparent;
     transition: opacity 0.6s linear;
     cursor: pointer;
 }
@@ -131,12 +131,11 @@
 
     .profile__name{
         max-width: 196px;
-        font-family: "Inter", "Arial", sans-serif;
+        
         font-size: 22px;
-        font-weight: 500;
+       
         line-height: 27px;
-        letter-spacing: 0em;
-        text-align: center;
+        
        
     }
 
@@ -148,13 +147,8 @@
     }
 
     .profile__category{
-    font-family: "Inter", "Arial", sans-serif;
     font-size: 14px;
-    font-weight: 400;
     line-height: 17px;
-    letter-spacing: 0em;
-    text-align: center;
-
     }
 
     .profile__add{
