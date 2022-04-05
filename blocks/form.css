@@ -67,7 +67,7 @@
     opacity: 0.8;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 632px) {
     .form{
         max-width: 238px;
         width: 100%;
