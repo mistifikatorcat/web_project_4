@@ -1,36 +1,50 @@
 .card{
     background-color: #FFF;
     color: #000;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    height: 361px;
+    
     max-width: 282px;
     border-radius: 10px;
 }
 
 .card__image{
     max-height: 282px;
+    max-width: 282px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     background-color: #000;
 }
 
 .card__info{
     display: flex;
     justify-content: space-between;
-    margin: 25px 15px 31px 21px;
+    padding: 25px 15px 31px 21px;
     align-items: center;
 }
 
 .card__title{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     margin: 0;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+
 }
 
 .card__like-button{
     background-image: url(../images/like.svg);
     background-color: #FFF;
-    /*transition: background-color 0.6s linear;*/
+    transition: opacity 0.6s linear;
     width: 21px;
     height: 19px;
     border: 0;
     cursor: pointer;
+}
+
+.card__like-button:hover{
+    opacity: 0.5;
 }
