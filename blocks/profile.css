@@ -1,6 +1,6 @@
 .profile{
     max-width: 880px;
-    /*max-height: 120px;*/
+    margin-top: 40px;
 }
 
 .profile__wrapper{
@@ -32,7 +32,6 @@
     flex-wrap: wrap;
     gap: 16px 18px;
     max-width: 415px;
-    max-height: 77px;
     align-items: center;
 }
 
@@ -45,13 +44,16 @@
     letter-spacing: 0em;
     text-align: left;
     margin: 0; 
+    text-overflow: ellipsis;
+    /*white-space: nowrap;*/
+    overflow: hidden;
 }
 
 .profile__edit-button{
-    background-image: url(../images/Edit\ Button.svg);
-    background-color: black;
+    background: url(../images/Edit\ Button.svg) no-repeat center;
+    background-color: transparent;
     transition: opacity 0.6s linear;
-    border: 0;
+    border: 1px #FFFFFF;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -70,21 +72,27 @@
     line-height: 22px;
     letter-spacing: 0em;
     text-align: left;
+    text-overflow: ellipsis;
+    /*white-space: nowrap;*/
+    overflow: hidden;
 }
 
-.profile__add{
+/*.profile__add{
     max-width: 150px;
     margin-left: 165px;
     display: flex;
-}
+}*/
 
 .profile__add-button{
+    margin-left: 165px;
+    display: flex;
     height: 50px;
     width: 150px;
     border: 2px solid #FFFFFF;
+    border-radius: 2px;
     padding: 14px 64px;
     background: url(../images/Add_button.png) no-repeat center;
-    background-color: black;
+    background-color: transparent;
     transition: opacity 0.6s linear;
     cursor: pointer;
 }
@@ -96,15 +104,16 @@
 @media screen and (max-width: 960px) {
 
 .profile{
-    margin: 0 20px;
+    margin: 40px 20px;
 }
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 632px) {
 
     .profile{
         max-width: 288px;
+        margin-top: 42px;
     }
 
     .profile__wrapper{
@@ -131,42 +140,38 @@
 
     .profile__name{
         max-width: 196px;
-        font-family: "Inter", "Arial", sans-serif;
+        
         font-size: 22px;
-        font-weight: 500;
+       
         line-height: 27px;
-        letter-spacing: 0em;
-        text-align: center;
+        
        
     }
 
     .profile__edit-button{
-        display: inline-block;
+    display: inline-block;
     max-width: 18px;
     height: 18px;
     width: 100%;
     }
 
     .profile__category{
-    font-family: "Inter", "Arial", sans-serif;
     font-size: 14px;
-    font-weight: 400;
     line-height: 17px;
-    letter-spacing: 0em;
-    text-align: center;
-
     }
 
-    .profile__add{
+   /* .profile__add{
         margin: 0;
         margin-top: 36px;
         max-width: 282px;
         max-height: 50px;
-    }
+    }*/
 
     .profile__add-button{
-        width: 100%;
-        height: 100%;
+        margin: 0;
+        margin-top: 36px;
+        max-width: 282px;
+        height: 54px;
         padding: 17px 133px;
     }
 }

@@ -28,7 +28,7 @@
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 632px) {
 
     .footer{
         max-width: 288px;
@@ -37,13 +37,8 @@
     }
     
     .footer__copyright{
-        font-family: "Inter", "Arial", sans-serif;
-        font-size: 14px;
-        font-weight: 400;
+        font-size: 14px;  
         line-height: 17px;
-        letter-spacing: 0em;
-        text-align: left;
-
     }
 
 }

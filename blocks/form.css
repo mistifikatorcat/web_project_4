@@ -58,7 +58,7 @@
     line-height: 22px;
     letter-spacing: 0em;
     text-align: center;
-
+    cursor: pointer;
     /*margin-bottom: 32px;*/
     padding: 13.66px 125px 18.49px;
   }
@@ -67,7 +67,7 @@
     opacity: 0.8;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 632px) {
     .form{
         max-width: 238px;
         width: 100%;
@@ -86,13 +86,7 @@
         padding: 14px 100px;
         width: 238px;
         height: 46px;
-        border-radius: 2px;
-        font-family: "Inter", "Arial", sans-serif;
         font-size: 14px;
-        font-weight: 400;
         line-height: 17px;
-        letter-spacing: 0em;
-        text-align: center;
-
     }
   }

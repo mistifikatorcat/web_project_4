@@ -10,13 +10,13 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px 17px;
     padding: 0;
+    margin: 0 auto;
 }
 
 
 @media screen and (max-width: 960px) {
     .grid{
         margin: 0 auto;
-        margin-top: 50px;
         max-width: 720px;
     }
     
@@ -25,10 +25,9 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 632px) {
 
     .grid{
-        margin: 0 auto;
         margin-top: 36px;
         max-width: 288px;
     }
