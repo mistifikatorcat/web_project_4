@@ -27,4 +27,4 @@ The way you'll do this at work is by exporting images directly from Figma — we
   - Less bugs
   - More cool features
 
-  * [Link to the project itself](https://mistifikatorcat.github.io/web_project_4/)
+[Link to the project itself](https://mistifikatorcat.github.io/web_project_4/)
