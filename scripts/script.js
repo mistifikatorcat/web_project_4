@@ -4,7 +4,7 @@ let form = document.querySelector(".popup");
 
 
     function openForm(){
-        form.classList.add("popup__enabled");
+        form.classList.toggle("popup_enabled");
         let fullname = document.querySelector(".profile__name"); //данные из самого сайта
         let job = document.querySelector(".profile__category");
         let nameInput = document.getElementById("name"); //данные из формы
@@ -20,7 +20,7 @@ let form = document.querySelector(".popup");
     button.addEventListener("click", openForm);
     
     function closeForm(){
-        form.classList.toggle("popup__enabled");
+        form.classList.toggle("popup_enabled");
     }
     
     close.addEventListener("click", closeForm);

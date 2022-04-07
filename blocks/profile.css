@@ -27,6 +27,7 @@
 }
 
 .profile__info{
+    max-width: 282px;
     margin-left: 3.75px;
     display: flex;
     flex-wrap: wrap;
@@ -45,12 +46,12 @@
     text-align: left;
     margin: 0; 
     text-overflow: ellipsis;
-    /*white-space: nowrap;*/
+    white-space: nowrap;
     overflow: hidden;
 }
 
 .profile__edit-button{
-    background: url(../images/Edit\ Button.svg) no-repeat center;
+    background: url(../images/Edit\ Button.svg) no-repeat center/cover;
     background-color: transparent;
     transition: opacity 0.6s linear;
     border: 1px #FFFFFF;
@@ -73,7 +74,7 @@
     letter-spacing: 0em;
     text-align: left;
     text-overflow: ellipsis;
-    /*white-space: nowrap;*/
+    white-space: nowrap;
     overflow: hidden;
 }
 
@@ -113,6 +114,7 @@
 
     .profile{
         max-width: 288px;
+        margin: 0;
         margin-top: 42px;
     }
 
@@ -151,7 +153,7 @@
     .profile__edit-button{
     display: inline-block;
     max-width: 18px;
-    height: 18px;
+    max-height: 18px;
     width: 100%;
     }
 
