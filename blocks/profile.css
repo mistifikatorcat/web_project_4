@@ -27,12 +27,12 @@
 }
 
 .profile__info{
-    max-width: 282px;
     margin-left: 3.75px;
     display: flex;
     flex-wrap: wrap;
-    gap: 16px 18px;
-    max-width: 415px;
+    gap: 0 18px;
+    max-width: 420px;
+    width: 420px;
     align-items: center;
 }
 
@@ -48,6 +48,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    width: 373px;
 }
 
 .profile__edit-button{
@@ -58,6 +59,7 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
+
 }
 
 .profile__edit-button:hover{
@@ -106,6 +108,11 @@
 
 .profile{
     margin: 40px 20px;
+    max-width: 100vw;
+}
+
+.profile__wrapper{
+    flex-direction: column;
 }
 
 }
