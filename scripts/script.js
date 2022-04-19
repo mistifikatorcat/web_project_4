@@ -1,3 +1,35 @@
+//Initial Cards Array
+
+const initialCards = [
+    {
+      name: "Yosemite Valley",
+      link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+    },
+    {
+      name: "Lake Louise",
+      link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+    },
+    {
+      name: "Bald Mountains",
+      link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+    },
+    {
+      name: "Latemar",
+      link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+    },
+    {
+      name: "Vanoise National Park",
+      link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+    },
+    {
+      name: "Lago di Braies",
+      link: "https://code.s3.yandex.net/web-code/lago.jpg"
+    }
+  ];
+
+
+//EditProfile
+
 let buttonEdit = document.querySelector(".profile__edit-button");
 let closeEdit = document.querySelector(".edit__close");
 let formEdit = document.querySelector(".edit");
@@ -42,6 +74,7 @@ function handleProfileFormSubmit(evt) {
 
 }
 
+//Add New Place
 
 formElement.addEventListener('submit', handleProfileFormSubmit);
 
@@ -90,3 +123,13 @@ let formAdd = document.querySelector(".add");
 
 
 //formElement.addEventListener('submit', handleProfileFormSubmit);
+const cardGrid = document.querySelector(".grid__cards");
+//function cardList(card){
+    const cardTemplate = document.querySelector("#card").content.querySelector("grid__card");
+    const cardElement = cardTemplate.cloneNode(true);
+
+        cardElement.querySelector("card__image").src = card.link;
+        cardElement.querySelector("card__title").textContent = card.name;
+    cardGrid.append(cardElement);
+//}
+//cardList(card);
