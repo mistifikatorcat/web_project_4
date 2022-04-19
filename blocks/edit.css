@@ -1,0 +1,100 @@
+.edit{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /*margin-right: -50%;*/
+    max-width: 100%;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%);
+}
+
+.edit_enabled{
+    display: flex;
+}  
+
+.edit__container{
+    display: flex;
+    flex-direction: column;
+    width: 470px;
+}
+
+/*.edit__close{
+    display: flex;
+    justify-content: flex-end;
+}*/
+
+.edit__close{
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    background: url(../images/Close\ Icon.svg) no-repeat center;
+    background-color: rgb(0, 0, 0, 0);
+    transition: opacity 0.6s linear;
+    width: 40.7px;
+    height: 40.7px;
+    border: 0;
+    cursor: pointer;
+}
+
+.edit__close:hover{
+    opacity: 0.6;
+}
+
+.edit__title{
+    display: flex;
+    font-family: "Inter", "Arial", sans-serif;
+    color: #000000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding-top: 36px;
+    padding-left: 36px;
+    max-width: 330px;
+    margin: 0;
+}
+
+.edit__form{
+    width: 430px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px #00000026;
+    background-color: #fff;
+
+}
+
+@media screen and (max-width: 632px) {
+
+.edit {
+    max-width: 633px;
+  }
+
+  .edit__container {
+    width: 282px;
+  }
+
+  .edit__close{
+    margin-bottom: 13.5px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .edit__form {
+    width: 100%;
+    /*max-height: 322px;*/
+  }
+
+  .edit__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding-left: 22px;
+    padding-top: 25px;
+    margin: 0 auto;
+  }
+}
