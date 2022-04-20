@@ -133,8 +133,8 @@ function cardList(card){
     const cardTemplate = document.querySelector("#card").content//.querySelector("grid__card");
     
       const cardElement = cardTemplate.cloneNode(true);
-      const cardImage = cardElement.querySelector("card__image");
-      const cardTitle = cardElement.querySelector("card__title");
+      const cardImage = cardElement.querySelector(".card__image");
+      const cardTitle = cardElement.querySelector(".card__title");
     
     
       cardImage.src = cardElements.link;
