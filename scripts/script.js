@@ -126,9 +126,9 @@ let formAdd = document.querySelector(".add");
 const cardGrid = document.querySelector(".grid__cards");
 
 function cardList(card){
-  const cardElements = initialCards.map(card => {
-  return card.link, card.name;
-  })
+  //const cardElements = initialCards.map(card => {
+  //return card.link, card.name;
+  //})
    
     const cardTemplate = document.querySelector("#card").content//.querySelector("grid__card");
     
@@ -137,8 +137,8 @@ function cardList(card){
       const cardTitle = cardElement.querySelector(".card__title");
     
     
-      cardImage.src = cardElements.link;
-      cardTitle.textContent = cardElements.name;
+      cardImage.src = card.link;
+      cardTitle.textContent = card.name;
        
     cardGrid.append(cardElement);
 
