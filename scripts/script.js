@@ -128,20 +128,27 @@ let formAdd = document.querySelector(".add");
 
 const cardGrid = document.querySelector(".grid__cards");
 function cardList(card){
-  const cardElements = initialCards.map(card => {
-    return card.link, card.name;
-  })
+  //const cardElements = initialCards.map(card => {
+    //return card.link, card.name;
+  //})
+   
     const cardTemplate = document.querySelector("#card").content//.querySelector("grid__card");
-    const cardElement = cardTemplate.cloneNode(true);
-
-        const cardImage = cardElement.querySelector("card__image");
-        cardImage.src = cardElements.link;
-        const cardTitle = cardElement.querySelector("card__title");
-        cardTitle.textContent = cardElements.name;
+    initialCards.forEach((card)=> {
+      const cardElement = cardTemplate.cloneNode(true);
+      const cardImage = cardElement.querySelector("card__image");
+      const cardTitle = cardElement.querySelector("card__title");
+    
+    
+      cardImage.src = card.link;
+      cardTitle.textContent = card.name;
+       
     cardGrid.append(cardElement);
 
     return cardElement;
+})
 }
+
+
 function renderGrid(card, grid){
   grid.append(cardList(card));
 }
