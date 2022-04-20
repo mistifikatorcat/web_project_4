@@ -123,29 +123,27 @@ let formAdd = document.querySelector(".add");
 
 
 //formElement.addEventListener('submit', handleProfileFormSubmit);
-
-
-
 const cardGrid = document.querySelector(".grid__cards");
+
 function cardList(card){
-  //const cardElements = initialCards.map(card => {
-    //return card.link, card.name;
-  //})
+  const cardElements = initialCards.map(card => {
+  return card.link, card.name;
+  })
    
     const cardTemplate = document.querySelector("#card").content//.querySelector("grid__card");
-    initialCards.forEach((card)=> {
+    
       const cardElement = cardTemplate.cloneNode(true);
       const cardImage = cardElement.querySelector("card__image");
       const cardTitle = cardElement.querySelector("card__title");
     
     
-      cardImage.src = card.link;
-      cardTitle.textContent = card.name;
+      cardImage.src = cardElements.link;
+      cardTitle.textContent = cardElements.name;
        
     cardGrid.append(cardElement);
 
     return cardElement;
-})
+
 }
 
 
@@ -154,3 +152,4 @@ function renderGrid(card, grid){
 }
 
 initialCards.forEach((card) => renderGrid(card, cardGrid));
+
