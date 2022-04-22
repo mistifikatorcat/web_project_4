@@ -127,7 +127,7 @@ function cardList(card){
       const cardTitle = cardElement.querySelector(".card__title");
     
     
-      cardImage.src = card.link;
+      cardImage.style.backgroundImage = `url(${card.link})`;
       cardTitle.textContent = card.name;
        
     cardGrid.append(cardElement);
