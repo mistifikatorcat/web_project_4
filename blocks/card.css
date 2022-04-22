@@ -35,7 +35,7 @@
 
 }
 
-.card__like-button{
+.card__like{
     background-image: url(../images/like.svg);
     background-color: #FFF;
     transition: opacity 0.6s linear;
@@ -45,6 +45,6 @@
     cursor: pointer;
 }
 
-.card__like-button:hover{
+.card__like:hover{
     opacity: 0.5;
 }
