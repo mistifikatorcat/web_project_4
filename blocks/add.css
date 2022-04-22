@@ -1,20 +1,25 @@
 .add{
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /*margin-right: -50%;*/
-    max-width: 100%;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(0, 0, 0, 0.5);
-    transform: translate(-50%, -50%);
+  display: flex;
+  position: fixed;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  max-width: 100%;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
 }
 
 .add_enabled{
-    display: flex;
+ opacity: 1;
+ visibility: visible;
+ transition: visibility 0.5s linear, opacity 0.5s linear;
 }  
 
 .add__container{

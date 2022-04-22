@@ -83,10 +83,6 @@ let formAdd = document.querySelector(".add");
 
     function openAddForm(){
         formAdd.classList.toggle("add_enabled");
-        
-       // let titleInput = document.getElementById("title"); 
-        //let linkInput = document.getElementById("link"); 
-
     }
 
     buttonAdd.addEventListener("click", openAddForm);
@@ -113,6 +109,29 @@ function handleAddFormSubmit(evt) {
 
 addFormElement.addEventListener('submit', handleAddFormSubmit);
 
+const popupImage = document.querySelector(".image");
+let closeImage = document.querySelector(".image__close");
+function fullImage(card){
+  const imageFull = popupImage.querySelector(".image__file");
+  const imageTitle = popupImage.querySelector(".image__title");
+
+  imageFull.src = card.link;
+  imageFull.alt = card.name;
+  imageTitle.textContent = card.name;
+
+  function closeFullImage(){
+    popupImage.classList.toggle("image_enabled");
+  }
+  closeImage.addEventListener("click", closeFullImage);
+
+}
+
+function openFullImage(){
+  popupImage.classList.toggle("image_enabled");
+}
+
+
+
 //cardRender
 
 const cardGrid = document.querySelector(".grid__cards");
@@ -129,6 +148,15 @@ function cardList(card){
     
       cardImage.style.backgroundImage = `url(${card.link})`;
       cardTitle.textContent = card.name;
+
+      cardTemplate.addEventListener("click", openFullImage(card));
+
+      const cardLike = cardElement.querySelector(".card__like");
+      const cardDelete = cardElement.querySelector(".card__delete");
+
+      cardLike.addEventListener("click", () => {cardLike.classList.toggle("card__like_active")});
+      cardDelete.addEventListener("click", function () { cardList.remove(cardList(card))});
+
        
     cardGrid.append(cardElement);
 
@@ -142,4 +170,10 @@ function renderGrid(card, grid){
 }
 
 initialCards.forEach((card) => renderGrid(card, cardGrid));
+
+//imageWrapper
+
+
+
+
 
