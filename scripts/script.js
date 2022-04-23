@@ -112,6 +112,7 @@ addFormElement.addEventListener('submit', handleAddFormSubmit);
 const popupImage = document.querySelector(".image");
 let closeImage = document.querySelector(".image__close");
 function fullImage(card){
+  popupImage.classList.toggle("image_enabled");
   const imageFull = popupImage.querySelector(".image__file");
   const imageTitle = popupImage.querySelector(".image__title");
 
@@ -124,11 +125,9 @@ function fullImage(card){
   }
   closeImage.addEventListener("click", closeFullImage);
 
+  return popupImage;
 }
 
-function openFullImage(){
-  popupImage.classList.toggle("image_enabled");
-}
 
 
 
@@ -149,7 +148,7 @@ function cardList(card){
       cardImage.style.backgroundImage = `url(${card.link})`;
       cardTitle.textContent = card.name;
 
-      cardTemplate.addEventListener("click", openFullImage(card));
+      cardElement.addEventListener("click", fullImage(card));
 
       const cardLike = cardElement.querySelector(".card__like");
       const cardDelete = cardElement.querySelector(".card__delete");
