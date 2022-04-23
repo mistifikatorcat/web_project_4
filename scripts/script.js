@@ -119,17 +119,14 @@ function fullImage(card){
   imageFull.alt = card.name;
   imageTitle.textContent = card.name;
 
-  popupImage.classList.toggle("image_enabled");
-
-  function closeFullImage(){
-    popupImage.classList.toggle("image_enabled");
-  }
-  closeImage.addEventListener("click", closeFullImage);
 
   return popupImage;
 }
 
-
+function closeFullImage(){
+  popupImage.classList.toggle("image_enabled");
+}
+closeImage.addEventListener("click", closeFullImage);
 
 
 //cardRender
@@ -148,21 +145,25 @@ function cardList(card){
     
       cardImage.style.backgroundImage = `url(${card.link})`;
       cardTitle.textContent = card.name;
-
-      cardElement.addEventListener("click", fullImage(card));
+      
+      cardImage.addEventListener("click", () => fullImage(card));
+      popupImage.classList.toggle("image_enabled");
 
       const cardLike = cardElement.querySelector(".card__like");
-      const cardDelete = cardElement.querySelector(".card__delete");
-
       cardLike.addEventListener("click", () => {cardLike.classList.toggle("card__like_active")});
-      cardDelete.addEventListener("click", function () { cardList(card).remove()});
+      const cardDelete = cardElement.querySelector(".card__delete");
+      cardDelete.addEventListener("click", function () { cardElement.remove(cardElement);});
 
        
-    cardGrid.append(cardElement);
+    cardGrid.prepend(cardElement);
 
+  
     return cardElement;
 
+    
 }
+
+
 
 
 function renderGrid(card, grid){
