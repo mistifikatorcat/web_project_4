@@ -21,9 +21,17 @@ The way you'll do this at work is by exporting images directly from Figma — we
 - Grid
 - Javascript
 - Adaptive design
+
+**What's New:**
+
+- Now you can like pictures
+- Pictures can be added
+- Pictures could be deleted
+- Can't look through the small card? Not a problem with an imageviewer. Just click on it and the picture will be shown in full-size!
   
   **Plans to improve:**
-  - Do not forget to write readme
+  - Refactoring and cleaning up the code
+  - Do not forget to update readme
   - Less bugs
   - More cool features
   - Do not forget to delete unnecessary comments
