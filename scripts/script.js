@@ -111,6 +111,10 @@ addFormElement.addEventListener('submit', handleAddFormSubmit);
 
 const popupImage = document.querySelector(".image");
 let closeImage = document.querySelector(".image__close");
+
+
+
+
 function fullImage(card){
   const imageFull = popupImage.querySelector(".image__file");
   const imageTitle = popupImage.querySelector(".image__title");
@@ -119,17 +123,15 @@ function fullImage(card){
   imageFull.alt = card.name;
   imageTitle.textContent = card.name;
 
-  cardImage.addEventListener("click", () => fullImage(card));
-      popupImage.classList.toggle("image_enabled");
-
-
-  function closeFullImage(){
-        popupImage.classList.toggle("image_enabled");
-      }
-      closeImage.addEventListener("click", closeFullImage);
-  return popupImage;
+   popupImage.classList.toggle("image_enabled");
 }
 
+
+function closeFullImage(){
+  popupImage.classList.toggle("image_enabled");
+}
+
+closeImage.addEventListener("click", closeFullImage);
 
 //cardRender
 
@@ -158,7 +160,7 @@ function cardList(card){
        
     cardGrid.prepend(cardElement);
 
-  
+    cardImage.addEventListener("click", () => fullImage(card));
     return cardElement;
 
     
