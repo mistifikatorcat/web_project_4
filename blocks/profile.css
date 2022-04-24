@@ -44,7 +44,7 @@
     line-height: 48px;
     letter-spacing: 0em;
     text-align: left;
-    margin: 0; 
+    margin: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -134,7 +134,7 @@
     }
 
     .profile__picture{
-        margin-top: 38.25x;
+        margin-top: 38.25px;
         margin-bottom: 26.25px;
         margin-left: 77.5px;
         margin-right: 73.75px;
