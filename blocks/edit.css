@@ -16,10 +16,16 @@
     transition: visibility 0.5s linear, opacity 0.5s linear;
 }
 
-.edit_enabled{
+.popup_enabled{
    opacity: 1;
    visibility: visible;
    transition: visibility 0.5s linear, opacity 0.5s linear;
+}  
+
+.popup_disabled{
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
 }  
 
 .edit__container{
