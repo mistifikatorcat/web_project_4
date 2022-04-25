@@ -38,13 +38,9 @@ const nameInput = document.getElementById("name");
 const jobInput = document.getElementById("category");
 
 //popup toggle
-function switchPopup(popup) {
-  if (popup.classList.contains("popup_enabled")) {
-    popup.classList.toggle("popup_enabled");
-  } else {
-    popup.classList.toggle("popup_enabled");
-  }
-}
+function switchPopup(popup) { 
+  popup.classList.toggle("popup_enabled");
+} 
 
 //edit profile
 function fillProfileForm() {
