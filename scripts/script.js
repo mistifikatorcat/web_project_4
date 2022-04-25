@@ -40,7 +40,7 @@ const jobInput = document.getElementById("category");
 //popup toggle
 function switchPopup(popup) {
   if (popup.classList.contains("popup_enabled")) {
-    popup.classList.toggle("popup_disabled");
+    popup.classList.toggle("popup_enabled");
   } else {
     popup.classList.toggle("popup_enabled");
   }
@@ -107,14 +107,9 @@ function openImagePreview(card) {
   imagePreview.alt = card.name;
   imageTitle.textContent = card.name;
 
-  popupImage.classList.toggle("image_enabled");
+  switchPopup(popupImage);
 }
 
-function closeImagePreview() {
-  popupImage.classList.toggle("image_enabled");
-}
-
-closeImage.addEventListener("click", closeImagePreview);
 
 //cardRender
 
@@ -159,4 +154,5 @@ editFormElement.addEventListener("submit", handleProfileFormSubmit);
 //add
 buttonAdd.addEventListener("click", () => switchPopup(formAdd));
 closeAdd.addEventListener("click", () => switchPopup(formAdd));
+closeImage.addEventListener("click", () => switchPopup(popupImage));
 addFormElement.addEventListener("submit", handleAddFormSubmit);

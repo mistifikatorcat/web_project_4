@@ -16,7 +16,7 @@
     z-index: 2;
 }
 
-.image_enabled{
+.popup_enabled{
   opacity: 1;
  visibility: visible;
  transition: visibility 0.5s linear, opacity 0.5s linear;
