@@ -66,6 +66,16 @@ function handleProfileFormSubmit(evt) {
   fullname.textContent = nameInput.value;
   job.textContent = jobInput.value;
   switchPopup(formEdit);
+
+  if (!formEdit.classList.contains("popup_enabled")){
+    document.removeEventListener("keydown", function (evt) {
+      if (evt.key === "Escape"){
+        switchPopup(popupImage);
+        switchPopup(formAdd);
+        switchPopup(formEdit);
+      };
+    }); 
+  };
 }
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
 
@@ -86,24 +96,48 @@ function handleAddFormSubmit(evt) {
   );
   switchPopup(formAdd);
   addFormElement.reset();
-}
+
+  if (!formAdd.classList.contains("popup_enabled")){
+    document.removeEventListener("keydown", function (evt) {
+      if (evt.key === "Escape"){
+        switchPopup(popupImage);
+        switchPopup(formAdd);
+        switchPopup(formEdit);
+      };
+    }); 
+  };
+};
 
 addFormElement.addEventListener("submit", handleAddFormSubmit);
 
 //image preview variables
 const popupImage = document.querySelector(".image");
 const closeImage = document.querySelector(".image__close");
+const imagePreview = popupImage.querySelector(".image__file");
+const imageTitle = popupImage.querySelector(".image__title");
+
 
 //imagepreview
 function openImagePreview(card) {
-  const imagePreview = popupImage.querySelector(".image__file");
-  const imageTitle = popupImage.querySelector(".image__title");
+ // const imagePreview = popupImage.querySelector(".image__file");
+  //const imageTitle = popupImage.querySelector(".image__title");
 
   imagePreview.src = card.link;
   imagePreview.alt = card.name;
   imageTitle.textContent = card.name;
 
+
   switchPopup(popupImage);
+
+  if (!popupImage.classList.contains("popup_enabled")){
+    document.removeEventListener("keydown", function (evt) {
+      if (evt.key === "Escape"){
+        switchPopup(popupImage);
+        switchPopup(formAdd);
+        switchPopup(formEdit);
+      };
+    }); 
+  };
 }
 
 
@@ -151,4 +185,12 @@ editFormElement.addEventListener("submit", handleProfileFormSubmit);
 buttonAdd.addEventListener("click", () => switchPopup(formAdd));
 closeAdd.addEventListener("click", () => switchPopup(formAdd));
 closeImage.addEventListener("click", () => switchPopup(popupImage));
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape"){
+    switchPopup(popupImage);
+    switchPopup(formAdd);
+    switchPopup(formEdit);
+  };
+});
+
 addFormElement.addEventListener("submit", handleAddFormSubmit);
