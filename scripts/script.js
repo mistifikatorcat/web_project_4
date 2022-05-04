@@ -66,16 +66,6 @@ function handleProfileFormSubmit(evt) {
   fullname.textContent = nameInput.value;
   job.textContent = jobInput.value;
   switchPopup(formEdit);
-
-  if (!formEdit.classList.contains("popup_enabled")){
-    document.removeEventListener("keydown", function (evt) {
-      if (evt.key === "Escape"){
-        switchPopup(popupImage);
-        switchPopup(formAdd);
-        switchPopup(formEdit);
-      };
-    }); 
-  };
 }
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
 
@@ -97,16 +87,7 @@ function handleAddFormSubmit(evt) {
   switchPopup(formAdd);
   addFormElement.reset();
 
-  if (!formAdd.classList.contains("popup_enabled")){
-    document.removeEventListener("keydown", function (evt) {
-      if (evt.key === "Escape"){
-        switchPopup(popupImage);
-        switchPopup(formAdd);
-        switchPopup(formEdit);
-      };
-    }); 
-  };
-};
+}
 
 addFormElement.addEventListener("submit", handleAddFormSubmit);
 
@@ -128,16 +109,7 @@ function openImagePreview(card) {
 
 
   switchPopup(popupImage);
-
-  if (!popupImage.classList.contains("popup_enabled")){
-    document.removeEventListener("keydown", function (evt) {
-      if (evt.key === "Escape"){
-        switchPopup(popupImage);
-        switchPopup(formAdd);
-        switchPopup(formEdit);
-      };
-    }); 
-  };
+  popupImage.addEventListener("click", closeOnEscape(popupImage));
 }
 
 
@@ -176,21 +148,26 @@ function renderCard(card, grid) {
 
 initialCards.forEach((card) => renderCard(card, cardGrid));
 
+const closeOnEscape = () => {
+  document.addEventListener("keydown", function (evt) {
+    if (evt.key === "Escape"){
+      const popup = document.querySelector(".popup_enabled");
+      switchPopup(popup);
+    }
+  });
+}
+
 //event listeners
 //edit
 buttonEdit.addEventListener("click", () => switchPopup(formEdit));
+buttonEdit.addEventListener("click", () => closeOnEscape(formEdit));
 closeEdit.addEventListener("click", () => switchPopup(formEdit));
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
 //add
 buttonAdd.addEventListener("click", () => switchPopup(formAdd));
+buttonAdd.addEventListener("click", () => closeOnEscape(formAdd));
 closeAdd.addEventListener("click", () => switchPopup(formAdd));
 closeImage.addEventListener("click", () => switchPopup(popupImage));
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape"){
-    switchPopup(popupImage);
-    switchPopup(formAdd);
-    switchPopup(formEdit);
-  };
-});
+
 
 addFormElement.addEventListener("submit", handleAddFormSubmit);
