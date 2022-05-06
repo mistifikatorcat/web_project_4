@@ -40,6 +40,7 @@ const jobInput = document.getElementById("category");
 //popup toggle
 function switchPopup(popup) { 
   popup.classList.toggle("popup_enabled");
+  popup.addEventListener("mousedown", closeOnLayover);
 } 
 
 //edit profile
@@ -110,6 +111,7 @@ function openImagePreview(card) {
 
   switchPopup(popupImage);
   popupImage.addEventListener("click", closeOnEscape(popupImage));
+
 }
 
 
@@ -157,15 +159,23 @@ const closeOnEscape = () => {
   });
 }
 
+const closeOnLayover = (evt) => {
+  if (evt.target === evt.currentTarget) {
+    switchPopup(evt.target);
+  }
+}
+
 //event listeners
 //edit
 buttonEdit.addEventListener("click", () => switchPopup(formEdit));
 buttonEdit.addEventListener("click", () => closeOnEscape(formEdit));
+
 closeEdit.addEventListener("click", () => switchPopup(formEdit));
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
 //add
 buttonAdd.addEventListener("click", () => switchPopup(formAdd));
 buttonAdd.addEventListener("click", () => closeOnEscape(formAdd));
+
 closeAdd.addEventListener("click", () => switchPopup(formAdd));
 closeImage.addEventListener("click", () => switchPopup(popupImage));
 
