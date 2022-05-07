@@ -1,7 +1,7 @@
 const validation = {
   formSelector: ".form",
   inputSelector: ".form__input",
-  fieldsetSelector: ".form__fieldset",
+  //fieldsetSelector: ".form__fieldset",
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_inactive",
   inputErrorClass: "form__input_type_error",
@@ -70,12 +70,8 @@ const showInputError = (formElement, inputElement, errorMessage) => {
         evt.preventDefault();
       });
   
-      const fieldsetList = Array.from(formElement.querySelectorAll(validation.fieldsetSelector));
-  
-      fieldsetList.forEach((fieldset) => {
-        setEventListeners(fieldset);
+        setEventListeners(formElement);
       });
-    });
   };
   
   enableValidation();
