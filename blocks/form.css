@@ -87,6 +87,10 @@
     border-radius: 2px;
   }
 
+  .form__button_inactive:hover{
+      opacity: 0.2;
+  }
+
   .form__button:hover {
     opacity: 0.8;
   }
