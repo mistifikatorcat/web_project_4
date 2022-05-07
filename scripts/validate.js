@@ -38,22 +38,22 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   };
   
   const toggleButtonState = (inputList, buttonElement) => {
-    console.log(buttonElement);
+    //console.log(buttonElement);
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validation.inactiveButtonClass);
       buttonElement.disabled = true;
-      console.log(inputList);
+      //console.log(inputList);
     } else {
       buttonElement.classList.remove(validation.inactiveButtonClass);
       buttonElement.disabled = false;
-      console.log(inputList);
+      //console.log(inputList);
     }
   };
   
   const setEventListeners = (formElement) => {
     const inputList = Array.from(formElement.querySelectorAll(validation.inputSelector));
     const buttonElement = formElement.querySelector(validation.submitButtonSelector);
-    console.log(validation.submitButtonSelector) 
+   // console.log(validation.submitButtonSelector) 
     //toggleButtonState(inputList, buttonElement);
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", function () {

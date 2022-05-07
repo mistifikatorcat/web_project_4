@@ -38,10 +38,37 @@ const nameInput = document.getElementById("name");
 const jobInput = document.getElementById("category");
 
 //popup toggle
-function switchPopup(popup) { 
-  popup.classList.toggle("popup_enabled");
+//function switchPopup(popup) { 
+  //popup.classList.toggle("popup_enabled");
+  //popup.addEventListener("mousedown", closeOnLayover);
+//} 
+
+function openPopup(popup) {  
+  popup.classList.add("popup_enabled"); 
+  popup.addEventListener("keydown", closeOnEscape);
   popup.addEventListener("mousedown", closeOnLayover);
-} 
+}
+
+function closePopup(popup) {  
+  popup.classList.remove("popup_enabled"); 
+  popup.removeEventListener("keydown", closeOnEscape);
+  popup.removeEventListener("mousedown", closeOnLayover);
+}
+
+const closeOnEscape = () => {
+  document.addEventListener("keydown", function (evt) {
+    if (evt.key === "Escape"){
+      const popup = document.querySelector(".popup_enabled");
+      closePopup(popup);
+    }
+  });
+}
+
+const closeOnLayover = (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+  }
+}
 
 //edit profile
 function fillProfileForm() {
@@ -52,7 +79,11 @@ function fillProfileForm() {
   jobInput.value = job.textContent;
 }
 
-buttonEdit.addEventListener("click", fillProfileForm);
+buttonEdit.addEventListener("click", () => {
+  fillProfileForm();
+  openPopup(formEdit);
+  closeOnEscape(formEdit);
+ }); 
 
 const editFormElement = document.getElementById("editForm");
 
@@ -66,7 +97,7 @@ function handleProfileFormSubmit(evt) {
 
   fullname.textContent = nameInput.value;
   job.textContent = jobInput.value;
-  switchPopup(formEdit);
+  closePopup(formEdit);
 }
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
 
@@ -85,7 +116,7 @@ function handleAddFormSubmit(evt) {
   cardGrid.prepend(
     createCard({ name: titleInput.value, link: linkInput.value })
   );
-  switchPopup(formAdd);
+  closePopup(formAdd);
   addFormElement.reset();
 
 }
@@ -109,8 +140,8 @@ function openImagePreview(card) {
   imageTitle.textContent = card.name;
 
 
-  switchPopup(popupImage);
-  popupImage.addEventListener("click", closeOnEscape(popupImage));
+  openPopup(popupImage);
+  //popupImage.addEventListener("click", closeOnEscape(popupImage));
 
 }
 
@@ -150,34 +181,18 @@ function renderCard(card, grid) {
 
 initialCards.forEach((card) => renderCard(card, cardGrid));
 
-const closeOnEscape = () => {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape"){
-      const popup = document.querySelector(".popup_enabled");
-      switchPopup(popup);
-    }
-  });
-}
-
-const closeOnLayover = (evt) => {
-  if (evt.target === evt.currentTarget) {
-    switchPopup(evt.target);
-  }
-}
 
 //event listeners
 //edit
-buttonEdit.addEventListener("click", () => switchPopup(formEdit));
-buttonEdit.addEventListener("click", () => closeOnEscape(formEdit));
+//buttonEdit.addEventListener("click", () => closeOnEscape(formEdit));
 
-closeEdit.addEventListener("click", () => switchPopup(formEdit));
+closeEdit.addEventListener("click", () => closePopup(formEdit));
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
 //add
-buttonAdd.addEventListener("click", () => switchPopup(formAdd));
-buttonAdd.addEventListener("click", () => closeOnEscape(formAdd));
+buttonAdd.addEventListener("click", () => openPopup(formAdd));
 
-closeAdd.addEventListener("click", () => switchPopup(formAdd));
-closeImage.addEventListener("click", () => switchPopup(popupImage));
+closeAdd.addEventListener("click", () => closePopup(formAdd));
+closeImage.addEventListener("click", () => closePopup(popupImage));
 
 
-addFormElement.addEventListener("submit", handleAddFormSubmit);
+//addFormElement.addEventListener("submit", handleAddFormSubmit);
