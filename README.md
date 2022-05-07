@@ -21,15 +21,24 @@ The way you'll do this at work is by exporting images directly from Figma — we
 - Grid
 - Javascript
 - Adaptive design
+- Form Validation
 
 **What's New:**
 
+07.05.22
+ - Added Validation
+ - Smoother Image-Popup closing
+ - Press Esc or click anywhere outside to close the Popup
+ - More bugs :D
+
+24.04.22
 - Now you can like pictures
 - Pictures can be added
 - Pictures could be deleted
 - Can't look through the small card? Not a problem with an imageviewer. Just click on it and the picture will be shown in full-size!
   
   **Plans to improve:**
+  - Add the actual back-end server to the project (because why not?)
   - Refactoring and cleaning up the code
   - Do not forget to update readme
   - Less bugs
