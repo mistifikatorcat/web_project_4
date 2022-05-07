@@ -1,3 +1,5 @@
+import { toggleButtonState } from "./validate.js";
+
 //Initial Cards Array
 
 const initialCards = [
@@ -77,6 +79,7 @@ function fillProfileForm() {
 
   nameInput.value = fullName.textContent;
   jobInput.value = job.textContent;
+
 }
 
 buttonEdit.addEventListener("click", () => {
@@ -106,17 +109,22 @@ const buttonAdd = document.querySelector(".profile__add-button");
 const closeAdd = document.querySelector(".add__close");
 const formAdd = document.querySelector(".add");
 const addFormElement = document.getElementById("addForm");
+const inputList = Array.from(editForm.querySelectorAll(".form__input"));
+const buttonElement = document.querySelector(".form__button");
+
 
 //add new place form + handler
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
+  toggleButtonState(inputList, buttonElement);
   const titleInput = document.getElementById("title");
   const linkInput = document.getElementById("link");
-
+ 
   cardGrid.prepend(
     createCard({ name: titleInput.value, link: linkInput.value })
   );
   closePopup(formAdd);
+ 
   addFormElement.reset();
 
 }

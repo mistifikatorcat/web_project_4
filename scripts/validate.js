@@ -37,7 +37,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     });
   };
   
-  const toggleButtonState = (inputList, buttonElement) => {
+  export const toggleButtonState = (inputList, buttonElement) => {
     //console.log(buttonElement);
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validation.inactiveButtonClass);
@@ -74,5 +74,5 @@ const showInputError = (formElement, inputElement, errorMessage) => {
       });
   };
   
-  enableValidation();
+  enableValidation(validation);
   
