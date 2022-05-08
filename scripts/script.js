@@ -47,22 +47,47 @@ const jobInput = document.getElementById("category");
 
 function openPopup(popup) {  
   popup.classList.add("popup_enabled"); 
-  popup.addEventListener("keydown", closeOnEscape);
+  popup.addEventListener("keydown", function closeOnEscape(evt) { 
+
+    if (evt.key === "Escape"){ 
+  
+      const popup = document.querySelector(".popup_enabled"); 
+  
+      closePopup(popup); 
+  
+    } 
+  
+  }); 
   popup.addEventListener("mousedown", closeOnLayover);
 }
 
 function closePopup(popup) {  
   popup.classList.remove("popup_enabled"); 
-  popup.removeEventListener("keydown", closeOnEscape);
+  popup.removeEventListener("keydown", function closeOnEscape(evt) { 
+
+    if (evt.key === "Escape"){ 
+  
+      const popup = document.querySelector(".popup_enabled"); 
+  
+      closePopup(popup); 
+  
+    } 
+  
+  }); 
   popup.removeEventListener("mousedown", closeOnLayover);
 }
 
-const closeOnEscape = (evt) => {
-      if (evt.key === "Escape"){
-      const popup = document.querySelector(".popup_enabled");
-      closePopup(popup);
-    }
-}
+document.addEventListener("keydown", function closeOnEscape(evt) { 
+
+  if (evt.key === "Escape"){ 
+
+    const popup = document.querySelector(".popup_enabled"); 
+
+    closePopup(popup); 
+
+  } 
+
+}); 
 
 const closeOnLayover = (evt) => {
   if (evt.target === evt.currentTarget) {
