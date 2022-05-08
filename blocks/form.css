@@ -90,9 +90,9 @@
     opacity: 0.8; 
   }
   
-  //*.form__button_inactive:hover { 
+  .form__button_inactive:hover { 
         opacity: 0.2; 
-  } *//
+  } 
 
   @media screen and (max-width: 632px) {
     .form{

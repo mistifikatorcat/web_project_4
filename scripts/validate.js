@@ -22,6 +22,23 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     errorElement.classList.remove(validation.inputErrorClass);
     errorElement.textContent = "";
   };
+
+  export function resetValidationError(formElement) {
+    const inputList = Array.from(
+      formElement.querySelectorAll(validation.inputSelector)
+    );
+  
+    const buttonElement = formElement.querySelector(
+      validation.submitButtonSelector
+    );
+  
+    inputList.forEach((inputElement) => {
+      hideInputError(formElement, inputElement);
+    });
+  
+    toggleButtonState(inputList, buttonElement);
+  }
+  
   
   const checkInputValidity = (formElement, inputElement) => {
     if (!inputElement.validity.valid) {

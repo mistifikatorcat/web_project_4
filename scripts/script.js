@@ -1,4 +1,4 @@
-import { toggleButtonState } from "./validate.js";
+import { resetValidationError, toggleButtonState } from "./validate.js";
 
 //Initial Cards Array
 
@@ -57,13 +57,11 @@ function closePopup(popup) {
   popup.removeEventListener("mousedown", closeOnLayover);
 }
 
-const closeOnEscape = () => {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape"){
+const closeOnEscape = (evt) => {
+      if (evt.key === "Escape"){
       const popup = document.querySelector(".popup_enabled");
       closePopup(popup);
     }
-  });
 }
 
 const closeOnLayover = (evt) => {
@@ -85,7 +83,7 @@ function fillProfileForm() {
 buttonEdit.addEventListener("click", () => {
   fillProfileForm();
   openPopup(formEdit);
-  closeOnEscape(formEdit);
+  //closeOnEscape(formEdit);
  }); 
 
 const editFormElement = document.getElementById("editForm");
@@ -126,7 +124,8 @@ function handleAddFormSubmit(evt) {
   closePopup(formAdd);
  
   addFormElement.reset();
-
+  toggleButtonState(inputList, buttonElement);
+  resetValidationError(addFormElement);
 }
 
 addFormElement.addEventListener("submit", handleAddFormSubmit);
