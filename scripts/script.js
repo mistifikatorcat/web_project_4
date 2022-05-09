@@ -39,55 +39,25 @@ const formEdit = document.querySelector(".edit");
 const nameInput = document.getElementById("name");
 const jobInput = document.getElementById("category");
 
-//popup toggle
-//function switchPopup(popup) { 
-  //popup.classList.toggle("popup_enabled");
-  //popup.addEventListener("mousedown", closeOnLayover);
-//} 
+function closeOnEscape(evt) {  
+  if (evt.key === "Escape") {  
+    const popup = document.querySelector(".popup_enabled");  
+    closePopup(popup);  
+  }  
+}
 
 function openPopup(popup) {  
   popup.classList.add("popup_enabled"); 
-  popup.addEventListener("keydown", function closeOnEscape(evt) { 
-
-    if (evt.key === "Escape"){ 
-  
-      const popup = document.querySelector(".popup_enabled"); 
-  
-      closePopup(popup); 
-  
-    } 
-  
-  }); 
+  document.addEventListener("keydown", closeOnEscape); 
   popup.addEventListener("mousedown", closeOnLayover);
 }
 
 function closePopup(popup) {  
   popup.classList.remove("popup_enabled"); 
-  popup.removeEventListener("keydown", function closeOnEscape(evt) { 
-
-    if (evt.key === "Escape"){ 
-  
-      const popup = document.querySelector(".popup_enabled"); 
-  
-      closePopup(popup); 
-  
-    } 
-  
-  }); 
+  document.removeEventListener("keydown", closeOnEscape);
   popup.removeEventListener("mousedown", closeOnLayover);
 }
 
-document.addEventListener("keydown", function closeOnEscape(evt) { 
-
-  if (evt.key === "Escape"){ 
-
-    const popup = document.querySelector(".popup_enabled"); 
-
-    closePopup(popup); 
-
-  } 
-
-}); 
 
 const closeOnLayover = (evt) => {
   if (evt.target === evt.currentTarget) {

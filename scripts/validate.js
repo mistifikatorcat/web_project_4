@@ -9,14 +9,14 @@ const validation = {
 };
 
 
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, validation) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(validation.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(validation.errorClass);
   };
   
-  const hideInputError = (formElement, inputElement) => {
+  const hideInputError = (formElement, inputElement, validation) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(validation.inputErrorClass);
     errorElement.classList.remove(validation.inputErrorClass);
@@ -54,7 +54,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     });
   };
   
-  export const toggleButtonState = (inputList, buttonElement) => {
+  export const toggleButtonState = (inputList, buttonElement, validation) => {
     //console.log(buttonElement);
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validation.inactiveButtonClass);
@@ -67,7 +67,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     }
   };
   
-  const setEventListeners = (formElement) => {
+  const setEventListeners = (formElement, validation) => {
     const inputList = Array.from(formElement.querySelectorAll(validation.inputSelector));
     const buttonElement = formElement.querySelector(validation.submitButtonSelector);
    // console.log(validation.submitButtonSelector) 
@@ -81,7 +81,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   };
   
   const enableValidation = (validationConfig) => {
-    const formList = Array.from(document.querySelectorAll(validation.formSelector));
+    const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
     formList.forEach((formElement) => {
       formElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
