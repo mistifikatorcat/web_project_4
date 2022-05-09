@@ -9,14 +9,14 @@ const validation = {
 };
 
 
-const showInputError = (formElement, inputElement, errorMessage, validation) => {
+const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(validation.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(validation.errorClass);
   };
   
-  const hideInputError = (formElement, inputElement, validation) => {
+  const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(validation.inputErrorClass);
     errorElement.classList.remove(validation.inputErrorClass);
@@ -54,7 +54,7 @@ const showInputError = (formElement, inputElement, errorMessage, validation) => 
     });
   };
   
-  export const toggleButtonState = (inputList, buttonElement, validation) => {
+  export const toggleButtonState = (inputList, buttonElement) => {
     //console.log(buttonElement);
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validation.inactiveButtonClass);
@@ -80,14 +80,14 @@ const showInputError = (formElement, inputElement, errorMessage, validation) => 
     });
   };
   
-  const enableValidation = (validationConfig) => {
-    const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
+  const enableValidation = (validation) => {
+    const formList = Array.from(document.querySelectorAll(validation.formSelector));
     formList.forEach((formElement) => {
       formElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
       });
   
-        setEventListeners(formElement, validationConfig);
+        setEventListeners(formElement, validation);
       });
   };
   

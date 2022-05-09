@@ -78,7 +78,7 @@ function fillProfileForm() {
 buttonEdit.addEventListener("click", () => {
   fillProfileForm();
   openPopup(formEdit);
-  //closeOnEscape(formEdit);
+ 
  }); 
 
 const editFormElement = document.getElementById("editForm");
@@ -86,8 +86,7 @@ const editFormElement = document.getElementById("editForm");
 //edit profile handler
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  //const nameInput = document.getElementById("name");
-  //const jobInput = document.getElementById("category");
+  
   const fullname = document.querySelector(".profile__name");
   const job = document.querySelector(".profile__category");
 
@@ -134,8 +133,7 @@ const imageTitle = popupImage.querySelector(".image__title");
 
 //imagepreview
 function openImagePreview(card) {
- // const imagePreview = popupImage.querySelector(".image__file");
-  //const imageTitle = popupImage.querySelector(".image__title");
+ 
 
   imagePreview.src = card.link;
   imagePreview.alt = card.name;
@@ -143,7 +141,7 @@ function openImagePreview(card) {
 
 
   openPopup(popupImage);
-  //popupImage.addEventListener("click", closeOnEscape(popupImage));
+ 
 
 }
 
@@ -186,7 +184,6 @@ initialCards.forEach((card) => renderCard(card, cardGrid));
 
 //event listeners
 //edit
-//buttonEdit.addEventListener("click", () => closeOnEscape(formEdit));
 
 closeEdit.addEventListener("click", () => closePopup(formEdit));
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
@@ -195,6 +192,3 @@ buttonAdd.addEventListener("click", () => openPopup(formAdd));
 
 closeAdd.addEventListener("click", () => closePopup(formAdd));
 closeImage.addEventListener("click", () => closePopup(popupImage));
-
-
-//addFormElement.addEventListener("submit", handleAddFormSubmit);
