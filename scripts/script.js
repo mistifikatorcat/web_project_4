@@ -50,14 +50,30 @@ function openPopup(popup) {
   popup.classList.add("popup_enabled"); 
   document.addEventListener("keydown", closeOnEscape); 
   popup.addEventListener("mousedown", closeOnLayover);
-  document.addEventListener("click", enableValidation);
+  document.addEventListener("click", enableValidation({
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  //fieldsetSelector: ".form__fieldset",
+  submitButtonSelector: ".form__button",
+  inactiveButtonClass: "form__button_inactive",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error_active",
+}));
 }
 
 function closePopup(popup) {  
   popup.classList.remove("popup_enabled"); 
   document.removeEventListener("keydown", closeOnEscape);
   popup.removeEventListener("mousedown", closeOnLayover);
-  document.removeEventListener("click", enableValidation);
+  document.removeEventListener("click", enableValidation({
+    formSelector: ".form",
+    inputSelector: ".form__input",
+    //fieldsetSelector: ".form__fieldset",
+    submitButtonSelector: ".form__button",
+    inactiveButtonClass: "form__button_inactive",
+    inputErrorClass: "form__input_type_error",
+    errorClass: "form__input-error_active",
+  }));
 }
 
 
