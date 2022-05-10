@@ -74,7 +74,7 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     //toggleButtonState(inputList, buttonElement);
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", function () {
-        checkInputValidity(formElement, inputElement);
+        checkInputValidity(formElement, inputElement, validationConfig);
         toggleButtonState(inputList, buttonElement, validationConfig);
       });
     });
