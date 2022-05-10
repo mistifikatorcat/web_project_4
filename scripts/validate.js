@@ -27,7 +27,7 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     });
   
     toggleButtonState(inputList, buttonElement, validationConfig);
-    console.log(formElement);
+    console.log("resetvalidation");
   }
   
   
@@ -46,7 +46,7 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
   };
   
   export const toggleButtonState = (inputList, buttonElement, validationConfig) => {
-   // console.log(buttonElement);
+    console.log("togglebutton");
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validationConfig.inactiveButtonClass);
       buttonElement.disabled = true;
@@ -67,7 +67,7 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
       inputElement.addEventListener("input", function () {
         checkInputValidity(formElement, inputElement, validationConfig);
         toggleButtonState(inputList, buttonElement, validationConfig);
-        resetValidationError(formElement, validationConfig);
+       // resetValidationError(formElement, validationConfig);
       });
     });
   };
