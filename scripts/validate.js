@@ -33,18 +33,18 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     );
   
     inputList.forEach((inputElement) => {
-      hideInputError(formElement, inputElement);
+      hideInputError(formElement, inputElement, validationConfig);
     });
   
-    toggleButtonState(inputList, buttonElement);
+    toggleButtonState(inputList, buttonElement, validationConfig);
   }
   
   
-  const checkInputValidity = (formElement, inputElement) => {
+  const checkInputValidity = (formElement, inputElement, validationConfig) => {
     if (!inputElement.validity.valid) {
-      showInputError(formElement, inputElement, inputElement.validationMessage);
+      showInputError(formElement, inputElement, inputElement.validationMessage, validationConfig);
     } else {
-      hideInputError(formElement, inputElement);
+      hideInputError(formElement, inputElement, validationConfig);
     }
   };
   
@@ -75,7 +75,7 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", function () {
         checkInputValidity(formElement, inputElement);
-        toggleButtonState(inputList, buttonElement);
+        toggleButtonState(inputList, buttonElement, validationConfig);
       });
     });
   };
