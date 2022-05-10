@@ -81,15 +81,15 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   };
   
   const enableValidation = (validationConfig) => {
-    const formList = Array.from(document.querySelectorAll(validation.formSelector));
+    const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
     formList.forEach((formElement) => {
       formElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
       });
   
-        setEventListeners(formElement, validation);
+        setEventListeners(formElement, validationConfig);
       });
   };
   
-  enableValidation(validationConfig);
+  enableValidation(validation);
   
