@@ -1,4 +1,4 @@
-import { resetValidationError, toggleButtonState } from "./validate.js";
+//import { resetValidationError, toggleButtonState } from "./validate.js";
 
 //Initial Cards Array
 
@@ -118,6 +118,7 @@ function handleAddFormSubmit(evt) {
   closePopup(formAdd);
  
   addFormElement.reset();
+  buttonElement.classList.add("form__button_inactive");
   //toggleButtonState(inputList, buttonElement);
   //resetValidationError(addFormElement);
 }

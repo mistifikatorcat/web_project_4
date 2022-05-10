@@ -13,22 +13,25 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     errorElement.textContent = "";
   };
 
-  export function resetValidationError(formElement, validationConfig) {
-    const inputList = Array.from(
-      formElement.querySelectorAll(validationConfig.inputSelector)
-    );
+  //export function resetValidationError(formElement, validationConfig) {
+
+
+    
+    //const inputList = Array.from(
+      //formElement.querySelectorAll(validationConfig.inputSelector)
+    //);
   
-    const buttonElement = formElement.querySelector(
-      validationConfig.submitButtonSelector
-    );
+ //   const buttonElement = formElement.querySelector(
+   //   validationConfig.submitButtonSelector
+    //);
   
-    inputList.forEach((inputElement) => {
-      hideInputError(formElement, inputElement, validationConfig);
-    });
+    //inputList.forEach((inputElement) => {
+      //hideInputError(formElement, inputElement, validationConfig);
+ //   });
   
-    toggleButtonState(inputList, buttonElement, validationConfig);
-    console.log("resetvalidation");
-  }
+   // toggleButtonState(inputList, buttonElement, validationConfig);
+    //console.log("resetvalidation");
+  //}
   
   
   const checkInputValidity = (formElement, inputElement, validationConfig) => {
