@@ -108,7 +108,7 @@ const buttonElement = document.querySelector(".form__button");
 //add new place form + handler
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
-  toggleButtonState(inputList, buttonElement, validationConfig);
+  toggleButtonState(inputList, buttonElement);
   const titleInput = document.getElementById("title");
   const linkInput = document.getElementById("link");
  
