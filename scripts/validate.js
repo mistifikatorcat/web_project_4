@@ -36,7 +36,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
       hideInputError(formElement, inputElement);
     });
   
-    toggleButtonState(inputList, buttonElement);
+    toggleButtonState(inputList, buttonElement, validation);
   }
   
   
@@ -54,7 +54,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     });
   };
   
-  export const toggleButtonState = (inputList, buttonElement) => {
+  export const toggleButtonState = (inputList, buttonElement, validation) => {
     //console.log(buttonElement);
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validation.inactiveButtonClass);
@@ -75,7 +75,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", function () {
         checkInputValidity(formElement, inputElement);
-        toggleButtonState(inputList, buttonElement);
+        toggleButtonState(inputList, buttonElement, validation);
       });
     });
   };
