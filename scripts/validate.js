@@ -27,6 +27,7 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     });
   
     toggleButtonState(inputList, buttonElement, validationConfig);
+    console.log(formElement);
   }
   
   
@@ -45,11 +46,11 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
   };
   
   export const toggleButtonState = (inputList, buttonElement, validationConfig) => {
-    //console.log(buttonElement);
+   // console.log(buttonElement);
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validationConfig.inactiveButtonClass);
       buttonElement.disabled = true;
-      //console.log(inputList);
+     // console.log(inputList);
     } else {
       buttonElement.classList.remove(validationConfig.inactiveButtonClass);
       buttonElement.disabled = false;
@@ -66,6 +67,7 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
       inputElement.addEventListener("input", function () {
         checkInputValidity(formElement, inputElement, validationConfig);
         toggleButtonState(inputList, buttonElement, validationConfig);
+        resetValidationError(formElement, validationConfig);
       });
     });
   };
