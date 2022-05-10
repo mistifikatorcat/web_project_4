@@ -1,4 +1,4 @@
-//import { resetValidationError, toggleButtonState } from "./validate.js";
+import { enableValidation } from "./validate.js";
 
 //Initial Cards Array
 
@@ -50,12 +50,14 @@ function openPopup(popup) {
   popup.classList.add("popup_enabled"); 
   document.addEventListener("keydown", closeOnEscape); 
   popup.addEventListener("mousedown", closeOnLayover);
+  document.addEventListener("click", buttonElement.classList.add("enableValidation.errorClass"));
 }
 
 function closePopup(popup) {  
   popup.classList.remove("popup_enabled"); 
   document.removeEventListener("keydown", closeOnEscape);
   popup.removeEventListener("mousedown", closeOnLayover);
+  document.removeEventListener("click", buttonElement.classList.add("enableValidation.errorClass"));
 }
 
 

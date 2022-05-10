@@ -49,7 +49,6 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
   };
   
   export const toggleButtonState = (inputList, buttonElement, validationConfig) => {
-    console.log("togglebutton");
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validationConfig.inactiveButtonClass);
       buttonElement.disabled = true;
@@ -57,7 +56,7 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     } else {
       buttonElement.classList.remove(validationConfig.inactiveButtonClass);
       buttonElement.disabled = false;
-      //console.log(inputList);
+      console.log("button turned on again");
     }
   };
   
@@ -75,7 +74,8 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     });
   };
   
-  const enableValidation = (validationConfig) => {
+  
+  export const enableValidation = (validationConfig) => {
     const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
     formList.forEach((formElement) => {
       formElement.addEventListener("submit", function (evt) {
