@@ -119,6 +119,7 @@ function handleAddFormSubmit(evt) {
  
   addFormElement.reset();
   buttonElement.classList.add("form__button_inactive");
+  buttonElement.disabled = true;
   //toggleButtonState(inputList, buttonElement);
   //resetValidationError(addFormElement);
 }
