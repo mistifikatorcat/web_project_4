@@ -52,7 +52,7 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add(validationConfig.inactiveButtonClass);
       buttonElement.disabled = true;
-     // console.log(inputList);
+     console.log("button turned off");
     } else {
       buttonElement.classList.remove(validationConfig.inactiveButtonClass);
       buttonElement.disabled = false;
@@ -79,6 +79,17 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
     const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
     formList.forEach((formElement) => {
       formElement.addEventListener("submit", function (evt) {
+        evt.preventDefault();
+      });
+  
+        setEventListeners(formElement, validationConfig);
+      });
+  };
+
+  export const disableValidation = (validationConfig) => {
+    const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
+    formList.forEach((formElement) => {
+      formElement.removeEventListener("submit", function (evt) {
         evt.preventDefault();
       });
   
