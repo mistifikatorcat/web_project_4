@@ -1,4 +1,3 @@
-import { disableValidation, enableValidation } from "./validate.js";
 
 //Initial Cards Array
 
@@ -39,6 +38,17 @@ const formEdit = document.querySelector(".edit");
 const nameInput = document.getElementById("name");
 const jobInput = document.getElementById("category");
 
+
+// add new place variables
+const buttonAdd = document.querySelector(".profile__add-button");
+const closeAdd = document.querySelector(".add__close");
+const formAdd = document.querySelector(".add");
+const addFormElement = document.getElementById("addForm");
+const inputList = Array.from(editForm.querySelectorAll(".form__input"));
+const buttonElement = document.querySelector(".form__button");
+
+
+
 function closeOnEscape(evt) {  
   if (evt.key === "Escape") {  
     const popup = document.querySelector(".popup_enabled");  
@@ -46,35 +56,16 @@ function closeOnEscape(evt) {
   }  
 }
 
-function openPopup(popup) {  
+function openPopup(popup) {
   popup.classList.add("popup_enabled"); 
   document.addEventListener("keydown", closeOnEscape); 
   popup.addEventListener("mousedown", closeOnLayover);
-  enableValidation({
-    formSelector: ".form",
-    inputSelector: ".form__input",
-    fieldsetSelector: ".form__fieldset",
-    submitButtonSelector: ".form__button",
-    inactiveButtonClass: "form__button_inactive",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "form__input-error_active",
-  });
-}
+ }
 
 function closePopup(popup) {  
   popup.classList.remove("popup_enabled"); 
   document.removeEventListener("keydown", closeOnEscape);
-  popup.removeEventListener("mousedown", closeOnLayover);
-  disableValidation({
-    formSelector: ".form",
-    inputSelector: ".form__input",
-    fieldsetSelector: ".form__fieldset",
-    submitButtonSelector: ".form__button",
-    inactiveButtonClass: "form__button_inactive",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "form__input-error_active",
-  });
-  
+  popup.removeEventListener("mousedown", closeOnLayover);   
 }
 
 
@@ -115,32 +106,26 @@ function handleProfileFormSubmit(evt) {
 }
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
 
-// add new place variables
-const buttonAdd = document.querySelector(".profile__add-button");
-const closeAdd = document.querySelector(".add__close");
-const formAdd = document.querySelector(".add");
-const addFormElement = document.getElementById("addForm");
-const inputList = Array.from(editForm.querySelectorAll(".form__input"));
-const buttonElement = document.querySelector(".form__button");
 
 
 //add new place form + handler
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
-  //toggleButtonState(inputList, buttonElement);
+ 
   const titleInput = document.getElementById("title");
   const linkInput = document.getElementById("link");
  
+  // disabling button taking object from event
+  evt.submitter.classList.add("form__button_inactive");
+  evt.submitter.disabled = true;     
+
   cardGrid.prepend(
     createCard({ name: titleInput.value, link: linkInput.value })
   );
-  closePopup(formAdd);
+  closePopup(formAdd,buttonElement);
  
   addFormElement.reset();
-  buttonElement.classList.add("form__button_inactive");
-  buttonElement.disabled = true;
-  //toggleButtonState(inputList, buttonElement);
-  //resetValidationError(addFormElement);
+  
 }
 
 addFormElement.addEventListener("submit", handleAddFormSubmit);
