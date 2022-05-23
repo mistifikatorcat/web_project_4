@@ -24,4 +24,4 @@ function closeOnEscape(evt) {
     }
   }
 
-  export {closeOnEscape, openPopup, closePopup, closeOnLayover};
+  export {openPopup, closePopup};
