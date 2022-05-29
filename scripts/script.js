@@ -47,7 +47,7 @@ const buttonAdd = document.querySelector(".profile__add-button");
 const closeAdd = document.querySelector(".add__close");
 const formAdd = document.querySelector(".add");
 const addFormElement = document.getElementById("addForm");
-const inputList = Array.from(editForm.querySelectorAll(".form__input"));
+//const inputList = Array.from(editForm.querySelectorAll(".form__input"));
 const buttonElement = document.querySelector(".form__button");
 
 
@@ -109,56 +109,13 @@ function handleAddFormSubmit(evt) {
 
 addFormElement.addEventListener("submit", handleAddFormSubmit);
 
-//image preview variables
-//const popupImage = document.querySelector(".image");
+
 const closeImage = document.querySelector(".image__close");
-//const imagePreview = popupImage.querySelector(".image__file");
-//const imageTitle = popupImage.querySelector(".image__title");
-
-
-//imagepreview
-//function openImagePreview(card) {
- 
-
-  //imagePreview.src = card.link;
- // imagePreview.alt = card.name;
-  //imageTitle.textContent = card.name;
-
-
-  //openPopup(popupImage);
- 
-
-//}
 
 
 //cardRender
 
 const cardGrid = document.querySelector(".grid__cards");
-
-//function createCard(card) {
-  //const cardTemplate = document
-    //.querySelector("#card")
-    //.content.querySelector(".grid__card");
-
-  //const cardElement = cardTemplate.cloneNode(true);
-  //const cardImage = cardElement.querySelector(".card__image");
-  //const cardTitle = cardElement.querySelector(".card__title");
-
-  //cardImage.style.backgroundImage = `url(${card.link})`;
-  //cardTitle.textContent = card.name;
-
-  //const cardLike = cardElement.querySelector(".card__like");
-  //cardLike.addEventListener("click", () => {
-    //cardLike.classList.toggle("card__like_active");
-  //});
-  //const cardDelete = cardElement.querySelector(".card__delete");
-  //cardDelete.addEventListener("click", function () {
-    //cardElement.remove(cardElement);
-  //});
-
-  //cardImage.addEventListener("click", () => openImagePreview(card));
-  //return cardElement;
-//}
 
 
 function renderCard(card, grid) {
