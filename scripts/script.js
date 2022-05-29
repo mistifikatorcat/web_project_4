@@ -1,5 +1,5 @@
 import {openPopup, closePopup} from "./utils.js";
-
+import { createCard, popupImage } from "./card.js";
 
 
 //Initial Cards Array
@@ -110,55 +110,56 @@ function handleAddFormSubmit(evt) {
 addFormElement.addEventListener("submit", handleAddFormSubmit);
 
 //image preview variables
-const popupImage = document.querySelector(".image");
+//const popupImage = document.querySelector(".image");
 const closeImage = document.querySelector(".image__close");
-const imagePreview = popupImage.querySelector(".image__file");
-const imageTitle = popupImage.querySelector(".image__title");
+//const imagePreview = popupImage.querySelector(".image__file");
+//const imageTitle = popupImage.querySelector(".image__title");
 
 
 //imagepreview
-function openImagePreview(card) {
+//function openImagePreview(card) {
  
 
-  imagePreview.src = card.link;
-  imagePreview.alt = card.name;
-  imageTitle.textContent = card.name;
+  //imagePreview.src = card.link;
+ // imagePreview.alt = card.name;
+  //imageTitle.textContent = card.name;
 
 
-  openPopup(popupImage);
+  //openPopup(popupImage);
  
 
-}
+//}
 
 
 //cardRender
 
 const cardGrid = document.querySelector(".grid__cards");
 
-function createCard(card) {
-  const cardTemplate = document
-    .querySelector("#card")
-    .content.querySelector(".grid__card");
+//function createCard(card) {
+  //const cardTemplate = document
+    //.querySelector("#card")
+    //.content.querySelector(".grid__card");
 
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
+  //const cardElement = cardTemplate.cloneNode(true);
+  //const cardImage = cardElement.querySelector(".card__image");
+  //const cardTitle = cardElement.querySelector(".card__title");
 
-  cardImage.style.backgroundImage = `url(${card.link})`;
-  cardTitle.textContent = card.name;
+  //cardImage.style.backgroundImage = `url(${card.link})`;
+  //cardTitle.textContent = card.name;
 
-  const cardLike = cardElement.querySelector(".card__like");
-  cardLike.addEventListener("click", () => {
-    cardLike.classList.toggle("card__like_active");
-  });
-  const cardDelete = cardElement.querySelector(".card__delete");
-  cardDelete.addEventListener("click", function () {
-    cardElement.remove(cardElement);
-  });
+  //const cardLike = cardElement.querySelector(".card__like");
+  //cardLike.addEventListener("click", () => {
+    //cardLike.classList.toggle("card__like_active");
+  //});
+  //const cardDelete = cardElement.querySelector(".card__delete");
+  //cardDelete.addEventListener("click", function () {
+    //cardElement.remove(cardElement);
+  //});
 
-  cardImage.addEventListener("click", () => openImagePreview(card));
-  return cardElement;
-}
+  //cardImage.addEventListener("click", () => openImagePreview(card));
+  //return cardElement;
+//}
+
 
 function renderCard(card, grid) {
   grid.append(createCard(card));
