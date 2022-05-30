@@ -1,6 +1,6 @@
 import { openPopup, closePopup } from "./utils.js";
-import { createCard, popupImage } from "./card.js";
-import FormValidator from "./validate.js";
+import { createCard, popupImage } from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 //Initial Cards Array
 
@@ -30,6 +30,12 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
+//consts
+const fullName = document.querySelector(".profile__name");
+const job = document.querySelector(".profile__category");
+
+const titleInput = document.getElementById("title");
+const linkInput = document.getElementById("link");
 
 //EditProfile variables
 
@@ -53,8 +59,8 @@ const buttonElement = document.querySelector(".form__button");
 
 //edit profile
 function fillProfileForm() {
-  const fullName = document.querySelector(".profile__name");
-  const job = document.querySelector(".profile__category");
+  //const fullName = document.querySelector(".profile__name");
+  //const job = document.querySelector(".profile__category");
 
   nameInput.value = fullName.textContent;
   jobInput.value = job.textContent;
@@ -71,10 +77,10 @@ const editFormElement = document.getElementById("editForm");
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
-  const fullname = document.querySelector(".profile__name");
-  const job = document.querySelector(".profile__category");
+  //const fullname = document.querySelector(".profile__name");
+  //const job = document.querySelector(".profile__category");
 
-  fullname.textContent = nameInput.value;
+  fullName.textContent = nameInput.value;
   job.textContent = jobInput.value;
   closePopup(formEdit);
 }
@@ -84,8 +90,8 @@ function handleProfileFormSubmit(evt) {
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
-  const titleInput = document.getElementById("title");
-  const linkInput = document.getElementById("link");
+  //const titleInput = document.getElementById("title");
+  //const linkInput = document.getElementById("link");
 
   // disabling button taking object from event
   evt.submitter.classList.add("form__button_inactive");
