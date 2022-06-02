@@ -1,4 +1,4 @@
-.edit{
+/*.edit{
     display: flex;
     position: fixed;
     visibility: hidden;
@@ -20,7 +20,7 @@
    opacity: 1;
    visibility: visible;
    transition: visibility 0.5s linear, opacity 0.5s linear;
-}  
+} */ 
 
 /*.popup_disabled{
   opacity: 0;
@@ -39,7 +39,7 @@
     justify-content: flex-end;
 }*/
 
-.edit__close{
+/*.edit__close{
     display: flex;
     justify-content: flex-end;
     align-self: flex-end;
@@ -54,7 +54,7 @@
 
 .edit__close:hover{
     opacity: 0.6;
-}
+}*/
 
 .edit__title{
     display: flex;

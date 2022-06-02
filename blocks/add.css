@@ -1,4 +1,4 @@
-.add{
+/*.add{
   display: flex;
   position: fixed;
   visibility: hidden;
@@ -20,7 +20,7 @@
  opacity: 1;
  visibility: visible;
  transition: visibility 0.5s linear, opacity 0.5s linear;
-}  
+}  */
 
 /*.popup_disabled{
   opacity: 0;
@@ -39,22 +39,7 @@
     justify-content: flex-end;
 }*/
 
-.add__close{
-    display: flex;
-    justify-content: flex-end;
-    align-self: flex-end;
-    background: url(../images/Close\ Icon.svg) no-repeat center;
-    background-color: rgb(0, 0, 0, 0);
-    transition: opacity 0.6s linear;
-    width: 40.7px;
-    height: 40.7px;
-    border: 0;
-    cursor: pointer;
-}
 
-.add__close:hover{
-    opacity: 0.6;
-}
 
 .add__title{
     display: flex;
