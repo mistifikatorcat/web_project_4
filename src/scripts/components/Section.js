@@ -5,16 +5,17 @@ export class Section {
       this._container = document.querySelector(containerSelector);
     }
   
-    setItem(element) {
-      this._container.append(element);
+    setItem(data) {
+     // const element = this._renderer(data);
+      this._container.prepend(data);
     }
   
-    clear() {
-      this._container.innerHTML = "";
-    }
+    //clear() {
+     // this._container.innerHTML = " ";
+    //}
   
     renderItems() {
-      this.clear();
+      //this.clear();
   
       this._renderedItems.forEach(item => {
       this._renderer(item);

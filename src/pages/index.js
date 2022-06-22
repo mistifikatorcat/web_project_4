@@ -12,7 +12,7 @@ import { UserInfo } from "../scripts/components/UserInfo.js";
 import {
   initialCards,
   formConfig,
-  cardGrid,
+  //cardGrid,
   formAdd,
   formEdit,
   editFormElement,
@@ -26,9 +26,9 @@ import {
 
 const imageModule = new PopupImage(popupImage);
 
-function createCard(item) {
-  const card = new Card(item, "#card", () => {
-    imageModule.open(item.link, item.description);
+function createCard(image) {
+  const card = new Card(image, "#card", () => {
+    imageModule.open(image.link, image.description);
   });
   return card.generateCard();
 }
@@ -40,7 +40,7 @@ const cardList  = new Section({
 
     cardList.setItem(newCard);
   },
-}, cardGrid);
+}, 'grid__cards');
 
 cardList.renderItems();
 
