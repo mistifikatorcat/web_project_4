@@ -52,7 +52,7 @@
 }
 
 .profile__edit-button{
-    background: url(../images/Edit\ Button.svg) no-repeat center/cover;
+    background: url(../images/Edit_Button.svg) no-repeat center/cover;
     background-color: transparent;
     transition: opacity 0.6s linear;
     border: 1px #FFFFFF;
