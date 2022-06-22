@@ -27,19 +27,15 @@ import {
 const imageModule = new PopupImage(popupImage);
 
 function createCard(image) {
-  const card = new Card(image, "#card", () => {
-    imageModule.open(image.link, image.description);
+  const card = new Card(image, "#card", (link, description) => {
+    imageModule.open(link, description);
   });
   return card.generateCard();
 }
 
 const cardList  = new Section({
   data: initialCards,
-  renderer: (item) => {
-    const newCard = createCard(item);
-
-    cardList.setItem(newCard);
-  },
+  renderer: createCard
 }, 'grid__cards');
 
 cardList.renderItems();

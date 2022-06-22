@@ -22,9 +22,11 @@ _getInputValues(){
 
 setEventListeners() {
     super.setEventListeners();
-     this._formSelector.addEventListener("submit", () =>
+     this._formSelector.addEventListener("submit", (e) => {
+        e.preventDefault();
+
       this._handleFormSubmit(this._getInputValues())
-    );
+     });
   }
 
 }

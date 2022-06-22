@@ -6,8 +6,8 @@ export class Section {
     }
   
     setItem(data) {
-     // const element = this._renderer(data);
-      this._container.prepend(data);
+     const element = this._renderer(data);
+      this._container.preppend(element);
     }
   
     //clear() {
