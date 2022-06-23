@@ -57,10 +57,10 @@ const profileFormSubmit = new PopupForm(editFormElement, (inputs) => {
 }); 
 
 
-buttonEdit.addEventListener("click", () => {
-  fillProfileForm();
-  openPopup(formEdit);
-});
+//buttonEdit.addEventListener("click", () => {
+  //fillProfile();
+  //openPopup(formEdit);
+//});
 
 
 
@@ -96,7 +96,7 @@ cardFormSubmit.setEventListeners();
 imageModule.setEventListeners();
 
 
-addFormElement.addEventListener("submit", handleAddFormSubmit);
+//ddFormElement.addEventListener("submit", handleAddFormSubmit);
 
 //const closeImage = document.querySelector(".image__close");
 
@@ -110,9 +110,9 @@ addFormElement.addEventListener("submit", handleAddFormSubmit);
     profileFormSubmit.open();
   });
 
-  buttonAdd.addEventListener("click", (evt) => {
-    evt.submitter.classList.add("form__button_inactive");
-    evt.submitter.disabled = true;
+  buttonAdd.addEventListener("click", () => {
+    //evt.submitter.classList.add("form__button_inactive");
+    //evt.submitter.disabled = true;
     cardFormSubmit.open();
   })
 
