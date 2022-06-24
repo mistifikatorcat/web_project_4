@@ -1,4 +1,4 @@
-//import { PopupImage} from "./PopupImage.js";
+
 
 
 export class Card {

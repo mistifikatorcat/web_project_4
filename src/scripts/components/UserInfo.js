@@ -1,6 +1,6 @@
 export class UserInfo{
-    constructor({fullname, category }){
-        this._nameInput = document.querySelector(fullname);
+    constructor({fullName, category }){
+        this._nameInput = document.querySelector(fullName);
         this._jobInput = document.querySelector(category);
     }
 

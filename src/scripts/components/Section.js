@@ -1,13 +1,13 @@
 export class Section {
     constructor({ data, renderer },  containerSelector) {
-      this._renderedItems = data;
+      this._items = data;
       this._renderer = renderer;
       this._container = document.querySelector(containerSelector);
     }
   
-    setItem(data) {
+    addItem(data) {
      const element = this._renderer(data);
-      this._container.preppend(element);
+      this._container.prepend(element);
     }
   
     //clear() {

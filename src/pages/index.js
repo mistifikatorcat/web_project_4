@@ -8,7 +8,6 @@ import { PopupImage } from "../scripts/components/PopupImage.js";
 
 import { UserInfo } from "../scripts/components/UserInfo.js";
 
-
 import {
   initialCards,
   formConfig,
@@ -21,7 +20,7 @@ import {
   nameInput,
   jobInput,
   popupImage,
-  addFormElement
+  addFormElement,
 } from "../scripts/utils/constants.js";
 
 const imageModule = new PopupImage(popupImage);
@@ -33,68 +32,67 @@ function createCard(image) {
   return card.generateCard();
 }
 
-const cardList  = new Section({
-  data: initialCards,
-  renderer: createCard
-}, 'grid__cards');
+const cardList = new Section(
+  {
+    data: initialCards,
+    renderer: createCard,
+  },
+  "grid__cards"
+);
 
 cardList.renderItems();
-
 
 ////
 
 //edit profile
-const fillProfile = new UserInfo({ 
- 
-fullName: ".profile__name",
-category: ".profile__category"
-
+const userInfo = new UserInfo({
+  fullName: ".profile__name",
+  category: ".profile__category",
 });
 
 const profileFormSubmit = new PopupForm(editFormElement, (inputs) => {
-  fillProfile.setUserInfo({name: inputs.name, description: inputs.description});
+  userInfo.setUserInfo({ name: inputs.name, description: inputs.description });
   profileFormSubmit.close();
-}); 
-
+});
 
 //buttonEdit.addEventListener("click", () => {
-  //fillProfile();
-  //openPopup(formEdit);
+//fillProfile();
+//openPopup(formEdit);
 //});
-
-
-
 
 //editFormElement.addEventListener("submit", handleProfileFormSubmit);
 
-
 //function handleAddFormSubmit(evt) {
-  //evt.preventDefault();
+//evt.preventDefault();
 
-  //const titleInput = document.getElementById("title");
-  //const linkInput = document.getElementById("link");
+//const titleInput = document.getElementById("title");
+//const linkInput = document.getElementById("link");
 
-  // disabling button taking object from event (have to implement somewhere)
-  //evt.submitter.classList.add("form__button_inactive");
-  //evt.submitter.disabled = true;
+// disabling button taking object from event (have to implement somewhere)
+//evt.submitter.classList.add("form__button_inactive");
+//evt.submitter.disabled = true;
 
+const cardForm = new PopupForm(addFormElement, (inputs) => {
+  const newCard = createCard({
+    name: inputs.description,
+    link: inputs.link,
+  });
 
-const cardFormSubmit = new PopupForm(addFormElement, (inputs) => {
-  const newCard =  createCard({ 
-    name: inputs.description, 
-    link: inputs.link });
+  cardList.addItem(newCard);
 
-  cardList.setItem(newCard);
-
-  cardFormSubmit.close();
+  cardForm.close();
   formAdd.reset();
-  
+
+  const disableButton = (evt) => {
+    evt.submitter.classList.add("form__button_inactive");
+    evt.submitter.disabled = true;
+  };
+  disableButton();
 });
 
 profileFormSubmit.setEventListeners();
-cardFormSubmit.setEventListeners();
+cardForm.setEventListeners();
 imageModule.setEventListeners();
-
 
 //ddFormElement.addEventListener("submit", handleAddFormSubmit);
 
@@ -102,22 +100,20 @@ imageModule.setEventListeners();
 
 //getting current profile name\desc
 
-  buttonEdit.addEventListener("click", () => {
-    const currentInput = fillProfile.getUserInfo();
-    nameInput.value = currentInput.name;
-    jobInput.value = currentInput.description;
+buttonEdit.addEventListener("click", () => {
+  const currentInput = userInfo.getUserInfo();
+  nameInput.value = currentInput.name;
+  jobInput.value = currentInput.description;
 
-    profileFormSubmit.open();
-  });
+  profileFormSubmit.open();
+});
 
-  buttonAdd.addEventListener("click", () => {
-    //evt.submitter.classList.add("form__button_inactive");
-    //evt.submitter.disabled = true;
-    cardFormSubmit.open();
-  })
+buttonAdd.addEventListener("click", () => {
+  cardForm.open();
+});
 
-const editFormValidation = new FormValidator(formConfig, formEdit);
-const addFormValidation = new FormValidator(formConfig, formAdd);
+const editFormValidator = new FormValidator(formConfig, formEdit);
+const addFormValidator = new FormValidator(formConfig, formAdd);
 
-editFormValidation.enableValidation();
-addFormValidation.enableValidation();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
