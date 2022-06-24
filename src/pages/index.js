@@ -24,88 +24,64 @@ import {
 } from "../scripts/utils/constants.js";
 
 const imageModule = new PopupImage(popupImage);
+imageModule.setEventListeners();
 
-function createCard(image) {
-  const card = new Card(image, "#card", (link, description) => {
-    imageModule.open(link, description);
+//adding card to gallery
+
+function renderCard(data) {
+  const card = new Card(data, "#card", () => {
+    imageModule.open(data.link, data.title);
   });
-  return card.generateCard();
+  const cardElement = card.generateCard(); 
+  cardList.addItem(cardElement)
 }
+
+//displaying cards in gallery
 
 const cardList = new Section(
   {
-    data: initialCards,
-    renderer: createCard,
+    items: initialCards,
+    renderer: renderCard,
   },
   "grid__cards"
 );
 
 cardList.renderItems();
 
-////
+//edit profile form
 
-//edit profile
 const userInfo = new UserInfo({
   fullName: ".profile__name",
   category: ".profile__category",
 });
 
-const profileFormSubmit = new PopupForm(editFormElement, (inputs) => {
+//setting the new user info
+
+const profileForm = new PopupForm(editFormElement, (inputs) => {
   userInfo.setUserInfo({ name: inputs.name, description: inputs.description });
-  profileFormSubmit.close();
+  profileForm.close();
 });
+profileForm.setEventListeners();
 
-//buttonEdit.addEventListener("click", () => {
-//fillProfile();
-//openPopup(formEdit);
-//});
-
-//editFormElement.addEventListener("submit", handleProfileFormSubmit);
-
-//function handleAddFormSubmit(evt) {
-//evt.preventDefault();
-
-//const titleInput = document.getElementById("title");
-//const linkInput = document.getElementById("link");
-
-// disabling button taking object from event (have to implement somewhere)
-//evt.submitter.classList.add("form__button_inactive");
-//evt.submitter.disabled = true;
+//adding card form
 
 const cardForm = new PopupForm(addFormElement, (inputs) => {
-  const newCard = createCard({
-    name: inputs.description,
-    link: inputs.link,
-  });
-
+  renderCard({ name: inputs.description, link: inputs.link })
   cardList.addItem(newCard);
 
   cardForm.close();
   formAdd.reset();
+  addFormValidator.resetValidationError();
 
-  const disableButton = (evt) => {
-    evt.submitter.classList.add("form__button_inactive");
-    evt.submitter.disabled = true;
-  };
-  disableButton();
 });
-
-profileFormSubmit.setEventListeners();
 cardForm.setEventListeners();
-imageModule.setEventListeners();
-
-//ddFormElement.addEventListener("submit", handleAddFormSubmit);
-
-//const closeImage = document.querySelector(".image__close");
-
-//getting current profile name\desc
 
 buttonEdit.addEventListener("click", () => {
   const currentInput = userInfo.getUserInfo();
   nameInput.value = currentInput.name;
   jobInput.value = currentInput.description;
 
-  profileFormSubmit.open();
+  profileForm.open();
 });
 
 buttonAdd.addEventListener("click", () => {
