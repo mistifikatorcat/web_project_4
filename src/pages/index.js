@@ -11,16 +11,15 @@ import { UserInfo } from "../scripts/components/UserInfo.js";
 import {
   initialCards,
   formConfig,
-  //cardGrid,
   formAdd,
   formEdit,
-  editFormElement,
+  addPopupElement,
+  editPopupElement,
   buttonAdd,
   buttonEdit,
   nameInput,
   jobInput,
   popupImage,
-  addFormElement,
 } from "../scripts/utils/constants.js";
 
 const imageModule = new PopupImage(popupImage);
@@ -43,7 +42,7 @@ const cardList = new Section(
     items: initialCards,
     renderer: renderCard,
   },
-  "grid__cards"
+  ".grid__cards"
 );
 
 cardList.renderItems();
@@ -57,7 +56,7 @@ const userInfo = new UserInfo({
 
 //setting the new user info
 
-const profileForm = new PopupForm(editFormElement, (inputs) => {
+const profileForm = new PopupForm(editPopupElement, (inputs) => {
   userInfo.setUserInfo({ name: inputs.name, description: inputs.description });
   profileForm.close();
 });
@@ -65,10 +64,9 @@ profileForm.setEventListeners();
 
 //adding card form
 
-const cardForm = new PopupForm(addFormElement, (inputs) => {
+const cardForm = new PopupForm(addPopupElement, (inputs) => {
   renderCard({ name: inputs.description, link: inputs.link })
-  cardList.addItem(newCard);
-
+  
   cardForm.close();
   formAdd.reset();
   addFormValidator.resetValidationError();

@@ -47,6 +47,11 @@ export const closeEdit = document.querySelector(".edit__close");
 export const formEdit = document.querySelector(".edit");
 export const editFormElement = document.getElementById("editForm");
 
+//popup form consts
+
+export const editPopupElement = document.querySelector('#edit');
+export const addPopupElement = document.querySelector('#add');
+
 //inputs
 export const nameInput = document.getElementById("name");
 export const jobInput = document.getElementById("category");
