@@ -14,6 +14,8 @@ import {
   formAdd,
   formEdit,
   addPopupElement,
+  addFormElement,
+  editFormElement,
   editPopupElement,
   buttonAdd,
   buttonEdit,
@@ -65,10 +67,10 @@ profileForm.setEventListeners();
 //adding card form
 
 const cardForm = new PopupForm(addPopupElement, (inputs) => {
-  renderCard({ name: inputs.description, link: inputs.link })
+  renderCard({ name: inputs.title, link: inputs.link })
   
   cardForm.close();
-  formAdd.reset();
+  addFormElement.reset();
   addFormValidator.resetValidationError();
 
 });
