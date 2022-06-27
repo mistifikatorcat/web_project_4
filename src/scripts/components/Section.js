@@ -6,12 +6,15 @@ export class Section {
   }
 
   // inserts element to the container
-  addItem(element) {
-     this._container.prepend(element);
-   }
+  addItem(data) {
+    const element = this._renderer(data)
+    this._container.prepend(element)
+  };
 
   // renders initial items
   renderItems() {
-    this._items.forEach(this._renderer);
-  }
+    this._items.forEach((data) => {
+      this.addItem(data)
+    })
+  };
 }

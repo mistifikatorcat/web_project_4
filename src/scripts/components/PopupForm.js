@@ -3,9 +3,11 @@ import { Popup } from "./Popup.js";
 export class PopupForm extends Popup {
   constructor(popupElement, handleFormSubmit) {
     super(popupElement);
+
+
     this._handleFormSubmit = handleFormSubmit;
-    this._formElement = popupElement.querySelector(".popup__form");
-    this._inputList = this._formSelector.querySelectorAll(".form__input");
+    this._formElement = this._popupElement.querySelector(".popup__form");
+    this._inputList = this._formElement.querySelectorAll(".form__input");
   }
 
   _getInputValues() {
@@ -21,7 +23,7 @@ export class PopupForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._formSelector.addEventListener("submit", (e) => {
+    this._formElement.addEventListener("submit", (e) => {
       e.preventDefault();
 
       this._handleFormSubmit(this._getInputValues());
@@ -33,4 +35,10 @@ export class PopupForm extends Popup {
       input.value = data[input.name];
     });
   }
+
+  close() {
+    super.close()
+    this._formElement.reset()
+}
+
 }

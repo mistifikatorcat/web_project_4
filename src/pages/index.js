@@ -24,17 +24,29 @@ import {
   popupImage,
 } from "../scripts/utils/constants.js";
 
-const imageModule = new PopupImage(popupImage);
-imageModule.setEventListeners();
 
-//adding card to gallery
 
-function renderCard(data) {
-  const card = new Card(data, "#card", () => {
-    imageModule.open(data.link, data.title);
-  });
-  const cardElement = card.generateCard(); 
-  cardList.addItem(cardElement)
+
+//submitting card
+
+const submitCard = (data) => {
+
+const newImage = {
+  title: data['title'],
+  link: data['link']
+};
+cardList.addItem(newImage);
+
+cardForm.close();
+
+}
+
+//submitting profile
+
+const submitProfile = (data) => {
+  userInfo.setUserInfo(data.name, data.description)
+
+  profileForm.close()
 }
 
 //displaying cards in gallery
@@ -49,44 +61,61 @@ const cardList = new Section(
 
 cardList.renderItems();
 
-//edit profile form
+//user info section
+
+const profileForm = new PopupForm(editPopupElement, submitProfile)
+profileForm.setEventListeners();
+
+//card section
+
+const cardForm = new PopupForm(addPopupElement, submitCard)
+cardForm.setEventListeners();
+
+//image section
+
+const imageModule = new PopupImage(popupImage);
+imageModule.setEventListeners();
+
+
+//adding card to gallery
+
+function renderCard(card) {
+  const image = new Card(card, "#card", (title, link) => {
+    imageModule.open(title, link);
+  });
+  return image.generateCard();
+}
+
+
+//getting the current user info
 
 const userInfo = new UserInfo({
   fullName: ".profile__name",
   category: ".profile__category",
 });
 
-//setting the new user info
+function renderProfile(){
+  const profile = userInfo.getUserInfo();
 
-const profileForm = new PopupForm(editPopupElement, (inputs) => {
-  userInfo.setUserInfo({ name: inputs.name, description: inputs.description });
-  profileForm.close();
-});
-profileForm.setEventListeners();
-
-//adding card form
-
-const cardForm = new PopupForm(addPopupElement, (inputs) => {
-  renderCard({ name: inputs.title, link: inputs.link })
+  nameInput.value = profile.name
+  jobInput.value = profile.description;
   
-  cardForm.close();
-  addFormElement.reset();
-  addFormValidator.resetValidationError();
-
-});
-cardForm.setEventListeners();
-
-buttonEdit.addEventListener("click", () => {
-  const currentInput = userInfo.getUserInfo();
-  nameInput.value = currentInput.name;
-  jobInput.value = currentInput.description;
-
+  editFormValidator.resetValidationError();
   profileForm.open();
-});
+}
+
+
+//handlers
+
+buttonEdit.addEventListener("click", renderProfile);
 
 buttonAdd.addEventListener("click", () => {
+  addFormValidator.resetValidationError();
   cardForm.open();
 });
+
+
+//validator settings
 
 const editFormValidator = new FormValidator(formConfig, formEdit);
 const addFormValidator = new FormValidator(formConfig, formAdd);
