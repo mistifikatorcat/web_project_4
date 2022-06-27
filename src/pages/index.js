@@ -80,8 +80,8 @@ imageModule.setEventListeners();
 //adding card to gallery
 
 function renderCard(card) {
-  const image = new Card(card, "#card", (title, link) => {
-    imageModule.open(title, link);
+  const image = new Card(card, "#card", () => {
+    imageModule.open(card.title, card.link);
   });
   return image.generateCard();
 }
