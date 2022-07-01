@@ -8,6 +8,8 @@ import { PopupImage } from "../scripts/components/PopupImage.js";
 
 import { UserInfo } from "../scripts/components/UserInfo.js";
 
+import { Api } from "../scripts/components/Api.js";
+
 import {
   initialCards,
   formConfig,
@@ -24,7 +26,42 @@ import {
   popupImage,
 } from "../scripts/utils/constants.js";
 
+//initializing api
 
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/cohort-3-en",
+  headers: {
+    authorization: "b451294b-44d9-464a-8874-2d4137a4eb3c",
+    "Content-Type": "application/json"
+  }
+});
+
+//getting initial cards
+
+api.getInitialCards()
+.then((res) => {
+  cardList.renderItems(res);
+})
+.catch((err) => {
+  console.log(err);
+})
+
+//getting user info
+
+api.getUserInfo()
+.then((res) => {
+  userInfo.setUserInfo({
+    name: res.name, description: res.about
+  })
+})
+  .then((res) => {
+    userInfo.setUserImage({
+      picture: res.avatar
+    })
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 
 
 //submitting card
@@ -92,6 +129,7 @@ function renderCard(card) {
 const userInfo = new UserInfo({
   fullName: ".profile__name",
   category: ".profile__category",
+  profilePic: ".profile__picture"
 });
 
 function renderProfile(){
