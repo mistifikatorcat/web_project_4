@@ -1,19 +1,19 @@
 export class UserInfo {
     constructor({ fullName, category }) {
-      this._nameInput = document.querySelector(fullName);
-      this._jobInput = document.querySelector(category);
+      this._fullName = document.querySelector(fullName);
+      this._category = document.querySelector(category);
     }
   
     getUserInfo() {
       return {
-        name: this._nameInput.textContent,
-        description: this._jobInput.textContent,
-      };
+        name: this._fullName.textContent,
+        description: this._category.textContent,
+      }
     }
   
-    setUserInfo({ name, description }) {
-      this._nameInput.textContent = name;
-      this._jobInput.textContent = description;
+    setUserInfo( name, description ) {
+      this._fullName.textContent = name;
+      this._category.textContent = description;
     }
   }
   

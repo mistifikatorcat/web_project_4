@@ -21,20 +21,35 @@
             <div class="profile__wrapper">
                 <div class="profile__card">
                     <div class="profile__picture-wrapper">
-                        <img class="profile__picture" alt="Profile Picture" src="<%=require ('./images/avatar-1.jpg')%>">
+                        <img class="profile__picture" alt="Profile Picture" src="#">
                     </div>
                     <div class="profile__info">
-                        <h1 class="profile__name">Jacque Fresco</h1>
+                        <h1 class="profile__name"></h1>
                         <button class="profile__edit-button" aria-label="edit" type="button">
-
                         </button>
-                        <p class="profile__category">Philosopher</p>
+                        <p class="profile__category"></p>
                     </div>
                 </div>
-                <!---- <div class="profile__add"> !-->
                 <button class="profile__add-button" aria-label="add" type="button">
                 </button>
-                <!---- </div> !-->
+            </div>
+        </section>
+        <section class="avatar popup" id="avatar">
+            <div class="avatar__container">
+                <button class="popup__close avatar__close">
+                </button>
+                <div class="avatar__form">
+                    <h3 class="avatar__title">Change Profile Picture</h3>
+                    <form class="form popup__form" id="avatarForm" novalidate>
+                        <fieldset class="form__fieldset">
+                            <input class="form__input" type="url" id="avatar-link" placeholder="Image Link" required/>
+                            <span class="form__input-error name-error"></span>
+                        </fieldset>
+                        <fieldset class="form__fieldset">
+                            <button class="form__button form__button_inactive" type="submit" disabled>Change</button>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </section>
         <section class="edit popup" id="edit">
@@ -79,6 +94,23 @@
                 </div>
             </div>
         </section>
+        <section class="delete popup" id="delete">
+            <div class="delete__container">
+
+                <button class="popup__close add__close">
+                </button>
+
+                <div class="delete__form">
+                    <h3 class="delete__title">Are you sure?</h3>
+                    <form class="form popup__form" id="deleteForm" novalidate>
+                        <fieldset class="form__fieldset">
+                            <button class="form__button" type="submit">Yes</button>
+                            <button class="form__button form__button-no"  type="button" id="cancelButton">No</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
         <section class="grid">
             <ul class="grid__cards">
 
@@ -105,6 +137,7 @@
                     <h3 class="card__title"></h3>
                     <button class="card__like" type="button">
                     </button>
+                    <h4 class="card__like-counter"></h4>
                 </div>
             </div>
         </li>

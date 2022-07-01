@@ -2,27 +2,27 @@
 
 export const initialCards = [
     {
-      name: "Yosemite Valley",
+      title: "Yosemite Valley",
       link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
     },
     {
-      name: "Lake Louise",
+      title: "Lake Louise",
       link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
     },
     {
-      name: "Bald Mountains",
+      title: "Bald Mountains",
       link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
     },
     {
-      name: "Latemar",
+      title: "Latemar",
       link: "https://code.s3.yandex.net/web-code/latemar.jpg",
     },
     {
-      name: "Vanoise National Park",
+      title: "Vanoise National Park",
       link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
     },
     {
-      name: "Lago di Braies",
+      title: "Lago di Braies",
       link: "https://code.s3.yandex.net/web-code/lago.jpg",
     },
   ];
@@ -30,7 +30,7 @@ export const initialCards = [
 //profile consts
 
 export const fullName = document.querySelector(".profile__name");
-export const job = document.querySelector(".profile__category");
+export const category = document.querySelector(".profile__category");
 
 //image consts
 export const popupImage = document.querySelector(".image");
