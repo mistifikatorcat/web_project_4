@@ -89,7 +89,7 @@ const submitProfile = (data) => {
 
 const cardList = new Section(
   {
-    items: initialCards,
+    //items: initialCards,
     renderer: renderCard,
   },
   ".grid__cards"
