@@ -1,12 +1,7 @@
-const fetcher = (url, header) => {
-    fetch(url,header)
-    .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        Promise.reject(`Error: ${res.status}`);
-      });
-  } 
+const fetcher = (url, header) => 
+    fetch(url, header).then((res) =>
+    res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
+      ); 
 
   export class Api {
     constructor({baseUrl, headers}){
@@ -19,7 +14,7 @@ const fetcher = (url, header) => {
         })
     }
     getUserInfo(){
-        return fetcher(`${this._baseUrl}/me`, {
+        return fetcher(`${this._baseUrl}/users/me`, {
             headers: this._headers
         })
     }

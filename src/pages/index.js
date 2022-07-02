@@ -36,6 +36,8 @@ const api = new Api({
   }
 });
 
+let userId;
+
 //getting initial cards
 
 api.getInitialCards()
@@ -50,14 +52,11 @@ api.getInitialCards()
 
 api.getUserInfo()
 .then((res) => {
-  userInfo.setUserInfo({
-    name: res.name, description: res.about
-  })
+   userId = res.id
+  userInfo.setUserInfo(res.name,  res.about)
 })
   .then((res) => {
-    userInfo.setUserImage({
-      picture: res.avatar
-    })
+    userInfo.setUserImage(res.avatar)
   })
   .catch((err) => {
     console.log(err);
