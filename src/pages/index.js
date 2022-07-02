@@ -11,19 +11,20 @@ import { UserInfo } from "../scripts/components/UserInfo.js";
 import { Api } from "../scripts/components/Api.js";
 
 import {
-  initialCards,
   formConfig,
   formAdd,
   formEdit,
+  formAvatar,
   addPopupElement,
-  addFormElement,
-  editFormElement,
   editPopupElement,
+  avatarPopupElement,
   buttonAdd,
   buttonEdit,
   nameInput,
   jobInput,
   popupImage,
+  avatarInput,
+  profilePic,
 } from "../scripts/utils/constants.js";
 
 //initializing api
@@ -36,7 +37,7 @@ const api = new Api({
   }
 });
 
-let userId;
+//let userId;
 
 //getting initial cards
 
@@ -52,7 +53,7 @@ api.getInitialCards()
 
 api.getUserInfo()
 .then((res) => {
-   userId = res.id
+  // userId = res.id
   userInfo.setUserInfo(res.name,  res.about)
 })
   .then((res) => {
@@ -85,11 +86,19 @@ const submitProfile = (data) => {
   profileForm.close()
 }
 
+//submitting profile pic
+
+const submitAvatar = (data) => {
+  userInfo.setUserImage(data.picture)
+
+  avatarForm.close()
+}
+
 //displaying cards in gallery
 
 const cardList = new Section(
   {
-    items: initialCards,
+    //items: initialCards,
     renderer: renderCard,
   },
   ".grid__cards"
@@ -111,6 +120,11 @@ cardForm.setEventListeners();
 
 const imageModule = new PopupImage(popupImage);
 imageModule.setEventListeners();
+
+//avatar section
+
+const avatarForm = new PopupForm(avatarPopupElement, submitAvatar);
+avatarForm.setEventListeners();
 
 
 //adding card to gallery
@@ -141,6 +155,14 @@ function renderProfile(){
   profileForm.open();
 }
 
+function renderAvatar(){
+  const profile = userInfo.getUserInfo();
+  avatarInput.value = profile.picture;
+
+  avatarFormValidator.resetValidationError();
+  avatarForm.open();
+}
+
 
 //handlers
 
@@ -151,11 +173,15 @@ buttonAdd.addEventListener("click", () => {
   cardForm.open();
 });
 
+profilePic.addEventListener("click", renderAvatar)
+
 
 //validator settings
 
 const editFormValidator = new FormValidator(formConfig, formEdit);
 const addFormValidator = new FormValidator(formConfig, formAdd);
+const avatarFormValidator = new FormValidator(formConfig, formAvatar);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
