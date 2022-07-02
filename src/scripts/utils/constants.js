@@ -31,6 +31,7 @@ export const initialCards = [
 
 export const fullName = document.querySelector(".profile__name");
 export const category = document.querySelector(".profile__category");
+export const profilePic = document.querySelector(".profile__picture");
 
 //image consts
 export const popupImage = document.querySelector(".image");
@@ -47,14 +48,22 @@ export const closeEdit = document.querySelector(".edit__close");
 export const formEdit = document.querySelector(".edit");
 export const editFormElement = document.getElementById("editForm");
 
+//avatar form consts
+
+export const formAvatar = document.querySelector(".avatar");
+
+
 //popup form consts
 
 export const editPopupElement = document.querySelector('#edit');
 export const addPopupElement = document.querySelector('#add');
+export const avatarPopupElement = document.querySelector('#avatar');
+
 
 //inputs
 export const nameInput = document.getElementById("name");
 export const jobInput = document.getElementById("category");
+export const avatarInput = document.getElementById("avatar");
 
 // image form consts
 export const buttonAdd = document.querySelector(".profile__add-button");
