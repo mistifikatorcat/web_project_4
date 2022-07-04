@@ -52,13 +52,16 @@ export const editFormElement = document.getElementById("editForm");
 
 export const formAvatar = document.querySelector(".avatar");
 
+//delete form consts
+
+
 
 //popup form consts
 
 export const editPopupElement = document.querySelector('#edit');
 export const addPopupElement = document.querySelector('#add');
 export const avatarPopupElement = document.querySelector('#avatar');
-
+export const deletePopupElement = document.querySelector('#delete');
 
 //inputs
 export const nameInput = document.getElementById("name");
