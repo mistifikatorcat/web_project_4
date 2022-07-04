@@ -13,8 +13,8 @@ export class Section {
 
   // renders initial items
   renderItems(items) {
-    items.forEach((item) => {
-      this.addItem(item)
+    items.forEach((data) => {
+      this.addItem(data)
     })
   };
 }

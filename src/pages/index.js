@@ -8,23 +8,26 @@ import { PopupImage } from "../scripts/components/PopupImage.js";
 
 import { UserInfo } from "../scripts/components/UserInfo.js";
 
-import { Api } from "../scripts/components/Api.js";
 
 import {
-  initialCards,
   formConfig,
   formAdd,
   formEdit,
+  formAvatar,
   addPopupElement,
-  addFormElement,
-  editFormElement,
   editPopupElement,
+  avatarPopupElement,
+  deletePopupElement,
   buttonAdd,
   buttonEdit,
   nameInput,
   jobInput,
   popupImage,
+  avatarInput,
+  profilePic,
 } from "../scripts/utils/constants.js";
+
+import { Api } from "../scripts/components/Api.js";
 
 //initializing api
 
@@ -38,51 +41,61 @@ const api = new Api({
 
 let userId;
 
-//getting initial cards
+//getting initial cards and profile info
 
-api.getInitialCards()
-.then((res) => {
-  cardList.renderItems(res);
-})
-.catch((err) => {
-  console.log(err);
-})
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, items]) => {
+    userId = userData.id;
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setUserImage(userData.avatar);
 
-//getting user info
-
-api.getUserInfo()
-.then((res) => {
-   userId = res.id
-  userInfo.setUserInfo(res.name,  res.about)
-})
-  .then((res) => {
-    userInfo.setUserImage(res.avatar)
+    cardList.renderItems(items);
   })
-  .catch((err) => {
-    console.log(err);
-  })
-
+  .catch((err) => {console.log(err)})
 
 //submitting card
 
 const submitCard = (data) => {
+  api.renderCard(data.title, data.link)
+  .then((res) => {
+    console.log('res => ', res)
+    const newImage = {
+      name: res.name,
+      link: res.link,
+      likes: res.likes,
+      _id: res._id
+    };
+    cardList.addItem(newImage);
+  })
+  .catch((err) => { console.log(err)})
+  .finally( () => { cardForm.close();})
 
-const newImage = {
-  title: data['title'],
-  link: data['link']
-};
-cardList.addItem(newImage);
-
-cardForm.close();
 
 }
 
 //submitting profile
 
 const submitProfile = (data) => {
-  userInfo.setUserInfo(data.name, data.description)
+  api.editProfile(data.name, data.description)
+  .then((res) => {
+    userInfo.setUserInfo(res.name, data.description)
+  })
+  .catch((err) => { console.log(err)})
+  .finally( () => {
+    profileForm.close();
+  })
+}
 
-  profileForm.close()
+//submitting profile pic
+
+const submitAvatar = (data) => {
+  api.editProfilePic(data.picture)
+  .then((res) => {
+    userInfo.setUserImage(res.picture)
+  })
+  .catch((err) => { console.log(err)})
+  .finally( () => { avatarForm.close()})
+
 }
 
 //displaying cards in gallery
@@ -112,13 +125,43 @@ cardForm.setEventListeners();
 const imageModule = new PopupImage(popupImage);
 imageModule.setEventListeners();
 
+//avatar section
+
+const avatarForm = new PopupForm(avatarPopupElement, submitAvatar);
+avatarForm.setEventListeners();
+
+//delete section
+
+const deleteForm = new PopupForm(deletePopupElement, submitDelete);
+deleteForm.setEventListeners();
+
 
 //adding card to gallery
 
 function renderCard(card) {
-  const image = new Card(card, "#card", () => {
-    imageModule.open(card.title, card.link);
-  });
+  const image = new Card(card, 
+    userId,
+    "#card",
+     () => {
+    imageModule.open(card.title, card.link); //handleCardClick
+  },
+  () => {
+    if (image.isLiked()){
+      api.unlikeCard(card.getId())
+      .then(res => {
+        card.getLikes(res.number)
+      })
+    }
+    else {
+      api.likeCard(card.getId())
+      .then(res => {
+        card.getLikes(res.number)
+    })
+  }
+}, () => {
+deleteForm.open();
+}
+  );
   return image.generateCard();
 }
 
@@ -141,6 +184,14 @@ function renderProfile(){
   profileForm.open();
 }
 
+function renderAvatar(){
+  const profile = userInfo.getUserInfo();
+  avatarInput.value = profile.picture;
+
+  avatarFormValidator.resetValidationError();
+  avatarForm.open();
+}
+
 
 //handlers
 
@@ -151,11 +202,15 @@ buttonAdd.addEventListener("click", () => {
   cardForm.open();
 });
 
+profilePic.addEventListener("click", renderAvatar)
+
 
 //validator settings
 
 const editFormValidator = new FormValidator(formConfig, formEdit);
 const addFormValidator = new FormValidator(formConfig, formAdd);
+const avatarFormValidator = new FormValidator(formConfig, formAvatar);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
