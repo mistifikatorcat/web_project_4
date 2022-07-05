@@ -58,12 +58,19 @@ const fetcher = (url, header) =>
         });
       }
     
-      unlikeCard(id) {
+    unlikeCard(id) {
         return fetcher(`${this._baseUrl}/cards/likes/${id}`, {
           method: "DELETE",
           headers: this._headers,
         });
       }
     
+    deleteCard(id) {
+        return fetcher(`${this._baseUrl}/cards/${id}`, {
+            method: "DELETE",
+            headers: this._headers,
+          });
+
+    }
     
   }

@@ -49,7 +49,7 @@ export class Card {
 
     //delete handler
     const cardDelete = this._element.querySelector(".card__delete");
-    cardDelete.addEventListener("click",  () => this.handleDelete(this._id));
+    cardDelete.addEventListener("click",  () => this._handleDelete(this._id));
 
     //image click handler
     const cardImage = this._element.querySelector(".card__image");

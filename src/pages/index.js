@@ -8,6 +8,7 @@ import { PopupImage } from "../scripts/components/PopupImage.js";
 
 import { UserInfo } from "../scripts/components/UserInfo.js";
 
+import { PopupDelete } from "../scripts/components/PopupDelete.js";
 
 import {
   formConfig,
@@ -25,6 +26,7 @@ import {
   popupImage,
   avatarInput,
   profilePic,
+  profilePicBtn
 } from "../scripts/utils/constants.js";
 
 import { Api } from "../scripts/components/Api.js";
@@ -40,6 +42,12 @@ const api = new Api({
 });
 
 let userId;
+
+const userInfo = new UserInfo({
+  fullName: ".profile__name",
+  category: ".profile__category",
+  profilePic: ".profile__picture"
+});
 
 //getting initial cards and profile info
 
@@ -78,6 +86,7 @@ const submitCard = (data) => {
 const submitProfile = (data) => {
   api.editProfile(data.name, data.description)
   .then((res) => {
+    
     userInfo.setUserInfo(res.name, data.description)
   })
   .catch((err) => { console.log(err)})
@@ -108,7 +117,7 @@ const cardList = new Section(
   ".grid__cards"
 );
 
-cardList.renderItems();
+//cardList.renderItems();
 
 //user info section
 
@@ -132,7 +141,7 @@ avatarForm.setEventListeners();
 
 //delete section
 
-const deleteForm = new PopupForm(deletePopupElement, submitDelete);
+const deleteForm = new PopupDelete(deletePopupElement);
 deleteForm.setEventListeners();
 
 
@@ -159,7 +168,16 @@ function renderCard(card) {
     })
   }
 }, () => {
-deleteForm.open();
+  deleteForm.open();
+  deleteForm.submitDelete(() => {
+    api.deleteCard(id)
+    .then(() => {
+      image.deleteCard();
+      deleteForm.close();
+    })
+    .catch((err) => { console.log(err)})
+  .finally( () => { deleteForm.close()})
+  })
 }
   );
   return image.generateCard();
@@ -168,11 +186,7 @@ deleteForm.open();
 
 //getting the current user info
 
-const userInfo = new UserInfo({
-  fullName: ".profile__name",
-  category: ".profile__category",
-  profilePic: ".profile__picture"
-});
+
 
 function renderProfile(){
   const profile = userInfo.getUserInfo();
@@ -202,7 +216,7 @@ buttonAdd.addEventListener("click", () => {
   cardForm.open();
 });
 
-profilePic.addEventListener("click", renderAvatar)
+profilePicBtn.addEventListener("click", renderAvatar)
 
 
 //validator settings

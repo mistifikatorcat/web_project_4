@@ -32,6 +32,7 @@ export const initialCards = [
 export const fullName = document.querySelector(".profile__name");
 export const category = document.querySelector(".profile__category");
 export const profilePic = document.querySelector(".profile__picture");
+export const profilePicBtn = document.querySelector(".profile__picture-overlay");
 
 //image consts
 export const popupImage = document.querySelector(".image");
