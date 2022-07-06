@@ -4,7 +4,7 @@
 export class Card {
   constructor(data, userId, cardSelector, handleCardClick, handleLike, handleDelete) {
     this._data = data;
-    this._title = data.title;
+    this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._id = data._id;
@@ -36,14 +36,16 @@ export class Card {
     const cardTitle = this._element.querySelector(".card__title");
 
     cardImage.style.backgroundImage = `url(${this._link})`;
-    cardTitle.textContent = this._title;
+    cardTitle.textContent = this._name;
+
+    this._countLikes();
 
     return this._element;
   }
 
   _setEventListeners() {
     //like handler
-    const cardLike = this._element.querySelector(".card__like");
+    const cardLike = this._element.querySelector(".card__like-button");
     cardLike.addEventListener("click", () => this._handleLike(this._id));
 
 
@@ -67,7 +69,7 @@ export class Card {
   }
 
   _countLikes(){
-    const cardLike = this._element.querySelector(".card__like");
+    const cardLike = this._element.querySelector(".card__like-button");
     const cardLikeCounter = this._element.querySelector(".card__like-counter");
     cardLikeCounter.textContent = this._likes.length;
 

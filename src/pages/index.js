@@ -147,24 +147,24 @@ deleteForm.setEventListeners();
 
 //adding card to gallery
 
-function renderCard(card) {
-  const image = new Card(card, 
+function renderCard(data) {
+  const image = new Card(data, 
     userId,
     "#card",
      () => {
-    imageModule.open(card.title, card.link); //handleCardClick
+    imageModule.open(data.name, data.link); //handleCardClick
   },
   () => {
     if (image.isLiked()){
-      api.unlikeCard(card.getId())
+      api.unlikeCard(data.getId())
       .then(res => {
-        card.getLikes(res.number)
+        data.getLikes(res.number)
       })
     }
     else {
-      api.likeCard(card.getId())
+      api.likeCard(data.getId())
       .then(res => {
-        card.getLikes(res.number)
+        data.getLikes(res.number)
     })
   }
 }, () => {
