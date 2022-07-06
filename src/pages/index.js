@@ -155,13 +155,13 @@ function renderCard(data) {
   },
   () => {
     if (image.isLiked()){
-      api.unlikeCard(data.getId())
+      api.unlikeCard(id)
       .then(res => {
         data.getLikes(res.number)
       })
     }
     else {
-      api.likeCard(data.getId())
+      api.likeCard(id)
       .then(res => {
         data.getLikes(res.number)
     })
