@@ -26,7 +26,8 @@ import {
   popupImage,
   avatarInput,
   profilePic,
-  profilePicBtn
+  profilePicBtn,
+  cardGrid
 } from "../scripts/utils/constants.js";
 
 import { Api } from "../scripts/components/Api.js";
@@ -52,10 +53,10 @@ const userInfo = new UserInfo({
 //getting initial cards and profile info
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([userData, items]) => {
-    userId = userData.id;
-    userInfo.setUserInfo(userData.name, userData.about);
-    userInfo.setUserImage(userData.avatar);
+  .then(([res, items]) => {
+    userId = res.id;
+    userInfo.setUserInfo(res.name, res.about);
+    userInfo.setUserImage(res.avatar);
 
     cardList.renderItems(items);
   })
@@ -64,17 +65,15 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 //submitting card
 
 const submitCard = (data) => {
-  api.renderCard(data.title, data.link)
-  .then((res) => {
-    console.log('res => ', res)
-    const newImage = {
-      name: res.name,
-      link: res.link,
-      likes: res.likes,
-      _id: res._id
-    };
-    cardList.addItem(newImage);
-  })
+  api.renderCard(data)
+  .then((card) => {
+    const newImage = renderCard(card);
+    cardGrid.prepend(newImage);
+    cardForm.close();
+    formAdd.reset();
+    formAdd.resetValidationError();
+    })
+    //cardList.addItem(newImage);
   .catch((err) => { console.log(err)})
   .finally( () => { cardForm.close();})
 
