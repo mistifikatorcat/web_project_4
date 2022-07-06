@@ -67,7 +67,7 @@ export const deletePopupElement = document.querySelector('#delete');
 //inputs
 export const nameInput = document.getElementById("name");
 export const jobInput = document.getElementById("category");
-export const avatarInput = document.getElementById("avatar");
+export const avatarInput = document.getElementById("avatarInput");
 
 // image form consts
 export const buttonAdd = document.querySelector(".profile__add-button");
