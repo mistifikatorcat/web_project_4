@@ -13,7 +13,7 @@ export class UserInfo {
       }
     }
   
-    setUserInfo( name, description ) {
+    setUserInfo( {name, description} ) {
       this._fullName.textContent = name;
       this._category.textContent = description;
     }

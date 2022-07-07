@@ -53,10 +53,13 @@ const userInfo = new UserInfo({
 //getting initial cards and profile info
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([res, items]) => {
-    userId = res.id;
-    userInfo.setUserInfo(res.name, res.about);
-    userInfo.setUserImage(res.avatar);
+  .then(([data, items]) => {
+    userId = data.id;
+    userInfo.setUserInfo({
+      name: data.name, 
+      description: data.about
+    });
+    userInfo.setUserImage(data.avatar);
 
     cardList.renderItems(items);
   })
@@ -86,10 +89,13 @@ const submitCard = (data) => {
 
 const submitProfile = (data) => {
   profileForm.showLoading();
-  api.editProfile(data.name, data.description)
-  .then((res) => {
+  api.editProfile(data)
+  .then(() => {
     
-    userInfo.setUserInfo(res.name, data.description)
+    userInfo.setUserInfo({
+      name: data.name, 
+      about: data.description
+    })
   })
   .catch((err) => { console.log(err)})
   .finally( () => {
@@ -101,9 +107,9 @@ const submitProfile = (data) => {
 
 const submitAvatar = (data) => {
   avatarForm.showLoading();
-  api.editProfilePic(data.picture)
+  api.editProfilePic(data.avatar)
   .then((res) => {
-    userInfo.setUserImage(res.picture)
+    userInfo.setUserImage(res.avatar)
   })
   .catch((err) => { console.log(err)})
   .finally( () => { avatarForm.hideLoading()})
@@ -160,14 +166,14 @@ function renderCard(data) {
   () => {
     if (image.isLiked()){
       api.unlikeCard(image.getId())
-      .then(res => {
-        data.setLikes(res.likes)
+      .then((res) => {
+        image.setLikes(res.likes)
       })
     }
     else {
       api.likeCard(image.getId())
-      .then(res => {
-        data.setLikes(res.likes)
+      .then((res) => {
+        image.setLikes(res.likes)
     })
   }
 }, () => {
