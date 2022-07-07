@@ -65,17 +65,19 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 //submitting card
 
 const submitCard = (data) => {
-  api.renderCard(data)
+  cardForm.showLoading();
+  api.createCard(data)
   .then((card) => {
     const newImage = renderCard(card);
     cardGrid.prepend(newImage);
     cardForm.close();
     formAdd.reset();
     formAdd.resetValidationError();
+    cardList.addItem(newImage);
     })
-    //cardList.addItem(newImage);
+    
   .catch((err) => { console.log(err)})
-  .finally( () => { cardForm.close();})
+  .finally( () => { cardForm.hideLoading();})
 
 
 }
@@ -83,6 +85,7 @@ const submitCard = (data) => {
 //submitting profile
 
 const submitProfile = (data) => {
+  profileForm.showLoading();
   api.editProfile(data.name, data.description)
   .then((res) => {
     
@@ -90,19 +93,20 @@ const submitProfile = (data) => {
   })
   .catch((err) => { console.log(err)})
   .finally( () => {
-    profileForm.close();
+    profileForm.hideLoading();
   })
 }
 
 //submitting profile pic
 
 const submitAvatar = (data) => {
+  avatarForm.showLoading();
   api.editProfilePic(data.picture)
   .then((res) => {
     userInfo.setUserImage(res.picture)
   })
   .catch((err) => { console.log(err)})
-  .finally( () => { avatarForm.close()})
+  .finally( () => { avatarForm.hideLoading()})
 
 }
 
@@ -155,21 +159,21 @@ function renderCard(data) {
   },
   () => {
     if (image.isLiked()){
-      api.unlikeCard(id)
+      api.unlikeCard(image.getId())
       .then(res => {
-        data.getLikes(res.number)
+        data.setLikes(res.likes)
       })
     }
     else {
-      api.likeCard(id)
+      api.likeCard(image.getId())
       .then(res => {
-        data.getLikes(res.number)
+        data.setLikes(res.likes)
     })
   }
 }, () => {
   deleteForm.open();
-  deleteForm.submitDelete(() => {
-    api.deleteCard(id)
+  deleteForm.setAction(() => {
+    api.deleteCard(image.getId())
     .then(() => {
       image.deleteCard();
       deleteForm.close();

@@ -38,7 +38,7 @@ export class Card {
     cardImage.style.backgroundImage = `url(${this._link})`;
     cardTitle.textContent = this._name;
 
-    this._countLikes();
+    this._renderLikes();
 
     return this._element;
   }
@@ -60,21 +60,23 @@ export class Card {
   }
 
   isLiked = () => {
-    return this._likes.find(user => user._id === this._userId);
+    return this._likes.some(user => user._id === this._userId);
   }
 
-  getLikes(number){
-    this._likes = number;
-    this._countLikes();
+  setLikes(likes){
+    this._likes = likes;
+    this._renderLikes();
   }
 
-  _countLikes(){
+  _renderLikes(){
     const cardLike = this._element.querySelector(".card__like-button");
     const cardLikeCounter = this._element.querySelector(".card__like-counter");
     cardLikeCounter.textContent = this._likes.length;
 
-    if(this.isLiked()){
-      cardLike.classList.toggle("card__like_active");
+    if (this.isLiked()) { 
+      cardLike.classList.add("card__like_active");
+    } else {
+      cardLike.classList.remove("card__like_active");
     }
 
   }

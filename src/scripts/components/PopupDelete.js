@@ -9,8 +9,8 @@ export class PopupDelete extends Popup{
         this._text = this._submitButton.textContent;
     }
 
-    submitDelete(evt){
-        this._handleSubmit = evt; 
+    setAction(action){
+        this._handleSubmit = action; 
     }
 
     setEventListeners(){

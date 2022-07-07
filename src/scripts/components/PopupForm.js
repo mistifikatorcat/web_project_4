@@ -8,6 +8,9 @@ export class PopupForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._formElement = this._popupElement.querySelector(".popup__form");
     this._inputList = this._formElement.querySelectorAll(".form__input");
+    //this._loadingButtonText = loadingButtonText;
+    //this._buttonText = buttonText;
+    this._submitButton = this._formElement.querySelector(".form__button");
   }
 
   _getInputValues() {
@@ -28,6 +31,18 @@ export class PopupForm extends Popup {
 
       this._handleFormSubmit(this._getInputValues());
     });
+  }
+
+  showLoading(){
+    const submit = this._submitButton;
+
+    submit.textContent = "Loading...";
+  }
+
+  hideLoading(){
+    const submit = this._submitButton;
+
+    submit.textContent = "Save";
   }
 
   setInputValues(data) {

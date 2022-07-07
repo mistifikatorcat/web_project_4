@@ -1,7 +1,7 @@
 const fetcher = (url, header) => 
-    fetch(url, header).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
-      ); 
+fetch(url, header).then((res) =>
+res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
+  );  //doesn't work inside of the class :(
 
   export class Api {
     constructor({baseUrl, headers}){
@@ -41,7 +41,7 @@ const fetcher = (url, header) =>
             headers: this._headers
         })
     }
-    renderCard(data){
+    createCard(data){
         return fetcher (`${this._baseUrl}/cards`, {
             method: "POST",
             headers: this._headers,
