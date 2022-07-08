@@ -30,7 +30,7 @@ import {
   cardGrid
 } from "../scripts/utils/constants.js";
 
-import { Api } from "../scripts/components/Api.js";
+import { Api } from "../scripts/utils/Api.js";
 
 //initializing api
 
