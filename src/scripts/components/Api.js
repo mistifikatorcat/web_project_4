@@ -1,22 +1,22 @@
-const fetcher = (url, header) => 
-fetch(url, header).then((res) =>
-res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
-  );  //doesn't work inside of the class :(
-
   export class Api {
     constructor({baseUrl, headers}){
         this._baseUrl = baseUrl;
         this._headers = headers;
     };
 
+   _fetch(url, header){
+      return  fetch(url, header)
+      .then((res) => res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
+  ); }
+
     getUserInfo(){
-        return fetcher(`${this._baseUrl}/users/me`, {
+        return this._fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers
         })
     }
 
     editProfile(data){
-        return fetcher (`${this._baseUrl}/users/me`, {
+        return this._fetch(`${this._baseUrl}/users/me`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
@@ -27,7 +27,7 @@ res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
 
     }
     editProfilePic(data){
-        return fetcher (`${this._baseUrl}/users/me/avatar`, {
+        return this._fetch(`${this._baseUrl}/users/me/avatar`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
@@ -37,12 +37,12 @@ res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
     }
     
     getInitialCards(){
-        return fetcher(`${this._baseUrl}/cards`, {
+        return this._fetch(`${this._baseUrl}/cards`, {
             headers: this._headers
         })
     }
     createCard(data){
-        return fetcher (`${this._baseUrl}/cards`, {
+        return this._fetch(`${this._baseUrl}/cards`, {
             method: "POST",
             headers: this._headers,
             body: JSON.stringify({
@@ -52,21 +52,21 @@ res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
         });
     }
     likeCard(id) {
-        return fetcher(`${this._baseUrl}/cards/likes/${id}`, {
+        return this._fetch(`${this._baseUrl}/cards/likes/${id}`, {
           method: "PUT",
           headers: this._headers,
         });
       }
     
     unlikeCard(id) {
-        return fetcher(`${this._baseUrl}/cards/likes/${id}`, {
+        return this._fetch(`${this._baseUrl}/cards/likes/${id}`, {
           method: "DELETE",
           headers: this._headers,
         });
       }
     
     deleteCard(id) {
-        return fetcher(`${this._baseUrl}/cards/${id}`, {
+        return this._fetch(`${this._baseUrl}/cards/${id}`, {
             method: "DELETE",
             headers: this._headers,
           });

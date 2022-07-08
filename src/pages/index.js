@@ -73,12 +73,12 @@ const submitCard = (data) => {
   cardForm.showLoading();
   api.createCard(data)
   .then((card) => {
-    const newImage = renderCard(card);
-    cardGrid.prepend(newImage);
+    
+    cardList.addItem(card);
     cardForm.close();
     formAdd.reset();
     formAdd.resetValidationError();
-    cardList.addItem(newImage);
+  
     })
     
   .catch((err) => { console.log(err)})
@@ -174,23 +174,26 @@ function renderCard(data) {
       .then((res) => {
         image.setLikes(res.likes)
       })
+      .catch((err) => { console.log(err)})
     }
     else {
       api.likeCard(image.getId())
       .then((res) => {
         image.setLikes(res.likes)
     })
+      .catch((err) => { console.log(err)})
   }
 }, () => {
   deleteForm.open();
   deleteForm.setAction(() => {
+    deleteForm.showLoading();
     api.deleteCard(image.getId())
     .then(() => {
       image.deleteCard();
       deleteForm.close();
     })
     .catch((err) => { console.log(err)})
-  .finally( () => { deleteForm.close()})
+  .finally( () => { deleteForm.hideLoading()})
   })
 }
   );

@@ -13,6 +13,18 @@ export class PopupDelete extends Popup{
         this._handleSubmit = action; 
     }
 
+    showLoading(){
+        const submit = this._submitButton;
+    
+        submit.textContent = "Loading...";
+      }
+    
+      hideLoading(){
+        const submit = this._submitButton;
+    
+        submit.textContent = "Save";
+      }
+
     setEventListeners(){
         this._formElement.addEventListener("submit", (e) => {
             e.preventDefault();
