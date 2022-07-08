@@ -59,7 +59,9 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       name: data.name, 
       description: data.about
     });
-    userInfo.setUserImage(data.avatar);
+    userInfo.setUserImage({
+      picture: data.avatar
+    });
 
     cardList.renderItems(items);
   })
@@ -96,6 +98,7 @@ const submitProfile = (data) => {
       name: data.name, 
       about: data.description
     })
+    profileForm.close();
   })
   .catch((err) => { console.log(err)})
   .finally( () => {
@@ -107,9 +110,11 @@ const submitProfile = (data) => {
 
 const submitAvatar = (data) => {
   avatarForm.showLoading();
-  api.editProfilePic(data.avatar)
-  .then((res) => {
-    userInfo.setUserImage(res.avatar)
+  api.editProfilePic(data)
+  .then(() => {
+    userInfo.setUserImage({
+      avatar: data.picture
+    })
   })
   .catch((err) => { console.log(err)})
   .finally( () => { avatarForm.hideLoading()})

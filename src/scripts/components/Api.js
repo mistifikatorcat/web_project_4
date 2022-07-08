@@ -21,7 +21,7 @@ res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
             headers: this._headers,
             body: JSON.stringify({
                 name: data.name,
-                about: data.description
+                about: data.category
             })
         });
 
@@ -31,7 +31,7 @@ res.ok ? res.json() : Promise.reject(`Something went wrong: ${res.status}`)
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
-                avatar: data.picture
+                avatar: data.avatar
             })
         });
     }

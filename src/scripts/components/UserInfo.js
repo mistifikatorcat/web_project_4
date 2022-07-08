@@ -18,7 +18,7 @@ export class UserInfo {
       this._category.textContent = description;
     }
 
-    setUserImage(picture){
+    setUserImage({picture}){
       this._profilePic.src = picture;
     }
 
