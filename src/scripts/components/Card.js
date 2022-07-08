@@ -74,9 +74,9 @@ export class Card {
     cardLikeCounter.textContent = this._likes.length;
 
     if (this.isLiked()) { 
-      cardLike.classList.add("card__like_active");
+      cardLike.classList.add("card__like-button_active");
     } else {
-      cardLike.classList.remove("card__like_active");
+      cardLike.classList.remove("card__like-button_active");
     }
 
   }

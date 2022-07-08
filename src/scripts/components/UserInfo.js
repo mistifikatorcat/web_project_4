@@ -13,9 +13,9 @@ export class UserInfo {
       }
     }
   
-    setUserInfo( {name, description} ) {
+    setUserInfo( {name, about} ) {
       this._fullName.textContent = name;
-      this._category.textContent = description;
+      this._category.textContent = about;
     }
 
     setUserImage({picture}){

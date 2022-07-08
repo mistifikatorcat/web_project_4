@@ -54,10 +54,10 @@ const userInfo = new UserInfo({
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, items]) => {
-    userId = data.id;
+    userId = data._id;
     userInfo.setUserInfo({
       name: data.name, 
-      description: data.about
+      about: data.about
     });
     userInfo.setUserImage({
       picture: data.avatar
@@ -92,11 +92,11 @@ const submitCard = (data) => {
 const submitProfile = (data) => {
   profileForm.showLoading();
   api.editProfile(data)
-  .then(() => {
+  .then((res) => {
     
     userInfo.setUserInfo({
-      name: data.name, 
-      about: data.description
+      name: res.name, 
+      about: res.about
     })
     profileForm.close();
   })
